@@ -6,4 +6,64 @@
   --black: #000;
   --white: #fff;
   --gray: #fafafa;
-          }
+}
+
+/* heading */
+h2 {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: normal;
+}
+
+/* button style  */
+
+.btnPrimary {
+  background-color: var(--primary);
+  color: var(--white);
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: normal;
+  border: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: var(--secondary);
+  }
+}
+
+.css-13cymwt-control {
+  background-color: var(--gray) !important;
+  border-radius: 12px !important;
+  border-color: transparent !important;
+}
+
+.css-t3ipsp-control {
+  min-height: 38px !important;
+  border-radius: 12px !important;
+  /* border-color: transparent !important; */
+  box-shadow: none !important;
+
+  &:hover {
+    border-color: transparent !important;
+    box-shadow: none !important;
+  }
+}
+.css-hlgwow {
+  padding: 6px 16px !important;
+}
+
+.css-1u9des2-indicatorSeparator {
+  display: none;
+}
+
+.css-1xc3v61-indicatorContainer {
+  & svg,
+  & svg path {
+    stroke: var(--black) !important;
+    fill: var(--black) !important;
+  }
+}
