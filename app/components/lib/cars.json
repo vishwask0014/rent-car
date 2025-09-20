@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "name": "Mercedes",
+    "type": "Sedan",
+    "price": 25,
+    "transmission": "Automat",
+    "fuel": "PB 95",
+    "features": ["Air Conditioner"],
+    "image": "/static/img/cartyrepattern.svg"
+  },
+  {
+    "id": 2,
+    "name": "Mercedes",
+    "type": "Sport",
+    "price": 50,
+    "transmission": "Manual",
+    "fuel": "PB 95",
+    "features": ["Air Conditioner"],
+    "image": "/static/img/cartyrepattern.svg"
+  },
+  {
+    "id": 3,
+    "name": "Mercedes",
+    "type": "Sedan",
+    "price": 45,
+    "transmission": "Automat",
+    "fuel": "PB 95",
+    "features": ["Air Conditioner"],
+    "image": "/static/img/cartyrepattern.svg"
+  },
+  {
+    "id": 4,
+    "name": "Porsche",
+    "type": "SUV",
+    "price": 40,
+    "transmission": "Automat",
+    "fuel": "PB 95",
+    "features": ["Air Conditioner"],
+    "image": "/static/img/cartyrepattern.svg"
+  },
+  {
+    "id": 5,
+    "name": "Toyota",
+    "type": "Sedan",
+    "price": 35,
+    "transmission": "Manual",
+    "fuel": "PB 95",
+    "features": ["Air Conditioner"],
+    "image": "/static/img/cartyrepattern.svg"
+  },
+  {
+    "id": 6,
+    "name": "Porsche",
+    "type": "SUV",
+    "price": 50,
+    "transmission": "Automat",
+    "fuel": "PB 95",
+    "features": ["Air Conditioner"],
+    "image": "/static/img/cartyrepattern.svg"
+  },
+  {
+    "id": 7,
+    "name": "Mercedes",
+    "type": "Van",
+    "price": 50,
+    "transmission": "Automat",
+    "fuel": "PB 95",
+    "features": ["Air Conditioner"],
+    "image": "/static/img/cartyrepattern.svg"
+  },
+  {
+    "id": 8,
+    "name": "Toyota",
+    "type": "Sport",
+    "price": 60,
+    "transmission": "Manual",
+    "fuel": "PB 95",
+    "features": ["Air Conditioner"],
+    "image": "/static/img/cartyrepattern.svg"
+  },
+  {
+    "id": 9,
+    "name": "Maybach",
+    "type": "Sedan",
+    "price": 70,
+    "transmission": "Automat",
+    "fuel": "PB 95",
+    "features": ["Air Conditioner"],
+    "image": "/static/img/cartyrepattern.svg"
+  }
+]

@@ -58,16 +58,16 @@ export default function IconContainer({ name }: { name: string }) {
           <path
             d="M5 12H19"
             stroke="black"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
           <path
             d="M12 5L19 12L12 19"
             stroke="black"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
         </svg>
       );
@@ -84,82 +84,82 @@ export default function IconContainer({ name }: { name: string }) {
           <path
             d="M20.3053 5.38983C21.2413 5.38983 22.0002 4.63099 22.0002 3.69492C22.0002 2.75884 21.2413 2 20.3053 2C19.3692 2 18.6104 2.75884 18.6104 3.69492C18.6104 4.63099 19.3692 5.38983 20.3053 5.38983Z"
             stroke="black"
-            stroke-width="2"
-            stroke-miterlimit="10"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeMiterlimit="10"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
           <path
             d="M11.9996 5.38983C12.9357 5.38983 13.6945 4.63099 13.6945 3.69492C13.6945 2.75884 12.9357 2 11.9996 2C11.0635 2 10.3047 2.75884 10.3047 3.69492C10.3047 4.63099 11.0635 5.38983 11.9996 5.38983Z"
             stroke="black"
-            stroke-width="2"
-            stroke-miterlimit="10"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeMiterlimit="10"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
           <path
             d="M3.69492 5.38983C4.63099 5.38983 5.38983 4.63099 5.38983 3.69492C5.38983 2.75884 4.63099 2 3.69492 2C2.75884 2 2 2.75884 2 3.69492C2 4.63099 2.75884 5.38983 3.69492 5.38983Z"
             stroke="black"
-            stroke-width="2"
-            stroke-miterlimit="10"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeMiterlimit="10"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
           <path
             d="M3.69492 22C4.63099 22 5.38983 21.2412 5.38983 20.3051C5.38983 19.369 4.63099 18.6102 3.69492 18.6102C2.75884 18.6102 2 19.369 2 20.3051C2 21.2412 2.75884 22 3.69492 22Z"
             stroke="black"
-            stroke-width="2"
-            stroke-miterlimit="10"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeMiterlimit="10"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
           <path
             d="M11.9996 22C12.9357 22 13.6945 21.2412 13.6945 20.3051C13.6945 19.369 12.9357 18.6102 11.9996 18.6102C11.0635 18.6102 10.3047 19.369 10.3047 20.3051C10.3047 21.2412 11.0635 22 11.9996 22Z"
             stroke="black"
-            stroke-width="2"
-            stroke-miterlimit="10"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeMiterlimit="10"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
           <path
             d="M20.3055 5.38983V10.1356C20.3055 11.0717 19.5466 11.8305 18.6106 11.8305H3.69531V18.6102"
             stroke="black"
-            stroke-width="2"
-            stroke-miterlimit="10"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeMiterlimit="10"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
           <path
             d="M3.69531 11.8305V5.38983"
             stroke="black"
-            stroke-width="2"
-            stroke-miterlimit="10"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeMiterlimit="10"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
           <path
             d="M12 5.38983V18.6102"
             stroke="black"
-            stroke-width="2"
-            stroke-miterlimit="10"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeMiterlimit="10"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
           <path
             d="M20.3053 22C21.2413 22 22.0002 21.2412 22.0002 20.3051C22.0002 19.369 21.2413 18.6102 20.3053 18.6102C19.3692 18.6102 18.6104 19.369 18.6104 20.3051C18.6104 21.2412 19.3692 22 20.3053 22Z"
             stroke="black"
-            stroke-width="2"
-            stroke-miterlimit="10"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeMiterlimit="10"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
           <path
             d="M20.3047 15.2203V18.6102"
             stroke="black"
-            stroke-width="2"
-            stroke-miterlimit="10"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeMiterlimit="10"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
         </svg>
       );
@@ -187,58 +187,58 @@ export default function IconContainer({ name }: { name: string }) {
             <path
               d="M20.5026 10.0002V7.33288C20.5026 5.86051 19.309 4.66686 17.8366 4.66686H17.8359V10.0002H20.5026Z"
               stroke="black"
-              stroke-width="2"
-              stroke-miterlimit="10"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeMiterlimit="10"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               d="M17.8307 4.66663C17.8307 3.19398 16.6368 1.99995 15.164 1.99995H9.8307C8.35796 1.99995 7.16406 3.19398 7.16406 4.66663V19.3333H17.8307V4.66663Z"
               stroke="black"
-              stroke-width="2"
-              stroke-miterlimit="10"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeMiterlimit="10"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               d="M9.83105 8.66669H15.1644V4.66669H9.83105V8.66669Z"
               stroke="black"
-              stroke-width="2"
-              stroke-miterlimit="10"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeMiterlimit="10"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               d="M20.4971 22C20.4971 21.2927 20.2161 20.6147 19.716 20.1144C19.2159 19.6143 18.5377 19.3333 17.8304 19.3333H7.16375C6.45653 19.3333 5.77823 19.6143 5.27815 20.1144C4.77802 20.6147 4.49707 21.2927 4.49707 22H20.4971Z"
               stroke="black"
-              stroke-width="2"
-              stroke-miterlimit="10"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeMiterlimit="10"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               d="M12.5029 11.3331C12.5029 11.3331 10.5029 12.9998 10.5029 14.6665C10.5029 15.7705 11.3991 16.6665 12.5029 16.6665C13.6068 16.6665 14.5029 15.7705 14.5029 14.6665C14.5029 12.9998 12.5029 11.3331 12.5029 11.3331Z"
               stroke="black"
-              stroke-width="2"
-              stroke-miterlimit="10"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeMiterlimit="10"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               d="M17.8359 15.3332C17.8359 16.0695 18.4329 16.6665 19.1693 16.6665C19.9057 16.6665 20.5026 16.0695 20.5026 15.3332V9.99982"
               stroke="black"
-              stroke-width="2"
-              stroke-miterlimit="10"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeMiterlimit="10"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               d="M2.5 22H22.5"
               stroke="black"
-              stroke-width="2"
-              stroke-miterlimit="10"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeMiterlimit="10"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </g>
         </svg>
@@ -267,99 +267,99 @@ export default function IconContainer({ name }: { name: string }) {
             <path
               d="M12 15.75V23.0625"
               stroke="black"
-              stroke-width="2"
-              stroke-miterlimit="10"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeMiterlimit="10"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               d="M12 0.937499V8.25"
               stroke="black"
-              stroke-width="2"
-              stroke-miterlimit="10"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeMiterlimit="10"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               d="M14.3438 2.2327L12 4.5L9.65625 2.15625"
               stroke="black"
-              stroke-width="2"
-              stroke-miterlimit="10"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeMiterlimit="10"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               d="M9.65625 21.7673L12 19.5L14.3438 21.8438"
               stroke="black"
-              stroke-width="2"
-              stroke-miterlimit="10"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeMiterlimit="10"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               d="M8.25 12H0.9375"
               stroke="black"
-              stroke-width="2"
-              stroke-miterlimit="10"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeMiterlimit="10"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               d="M23.0625 12H15.75"
               stroke="black"
-              stroke-width="2"
-              stroke-miterlimit="10"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeMiterlimit="10"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               d="M21.7673 14.3438L19.5 12L21.8438 9.65625"
               stroke="black"
-              stroke-width="2"
-              stroke-miterlimit="10"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeMiterlimit="10"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               d="M2.2327 9.65625L4.5 12L2.15625 14.3438"
               stroke="black"
-              stroke-width="2"
-              stroke-miterlimit="10"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeMiterlimit="10"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </g>
           <path
             d="M9.32813 14.6719L6.375 17.625"
             stroke="black"
-            stroke-width="2"
-            stroke-miterlimit="10"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeMiterlimit="10"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
           <path
             d="M17.625 6.375L14.6719 9.32812"
             stroke="black"
-            stroke-width="2"
-            stroke-miterlimit="10"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeMiterlimit="10"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
           <path
             d="M9.35156 9.35156L6.375 6.375"
             stroke="black"
-            stroke-width="2"
-            stroke-miterlimit="10"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeMiterlimit="10"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
           <path
             d="M17.625 17.625L14.6719 14.6719"
             stroke="black"
-            stroke-width="2"
-            stroke-miterlimit="10"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeMiterlimit="10"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
           <mask
             id="mask1_1_2376"
@@ -375,10 +375,10 @@ export default function IconContainer({ name }: { name: string }) {
             <path
               d="M12 8.25C14.0711 8.25 15.75 9.92892 15.75 12C15.75 14.0711 14.0711 15.75 12 15.75C9.92892 15.75 8.25 14.0711 8.25 12C8.25 9.92892 9.92892 8.25 12 8.25Z"
               stroke="black"
-              stroke-width="2"
-              stroke-miterlimit="10"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeMiterlimit="10"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </g>
         </svg>

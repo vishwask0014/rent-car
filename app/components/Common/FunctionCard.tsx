@@ -1,5 +1,6 @@
 import React from "react";
 import IconContainer from "../IconContainer";
+import Link from "next/link";
 
 function FunctionCard({
   image = "/static/img/Img.png",
@@ -7,6 +8,7 @@ function FunctionCard({
   price = 25,
   type = "Sedan",
   duration = "per day",
+  id = 1,
   features = [
     { name: "gearType", label: "Automatic" },
     { name: "fuel", label: "PB 95" },
@@ -45,7 +47,7 @@ function FunctionCard({
         </div>
 
         {/* Button */}
-        <button className="btnPrimary w-full">View Details</button>
+        <Link href={`/${id}`} className="btnPrimary w-full text-center block">View Details</Link>
       </div>
     </article>
   );
