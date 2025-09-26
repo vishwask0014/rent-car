@@ -6,6 +6,7 @@
   --black: #000;
   --white: #fff;
   --gray: #fafafa;
+  --darkGray: #ebebeb;
 }
 
 /* heading */
@@ -65,5 +66,46 @@ h2 {
   & svg path {
     stroke: var(--black) !important;
     fill: var(--black) !important;
+  }
+}
+
+/* listing form UI */
+
+.form-contianer {
+  display: flex;
+  flex-direction: column;
+
+  & label {
+    font-size: 16px;
+    line-height: normal;
+    margin-bottom: 8px;
+    color: #242424;
+    display: block;
+    font-weight: 500;
+  }
+
+  & input[type="text"],
+  & select {
+    width: 100%;
+    color: #242424;
+    font-size: 14px;
+    line-height: normal;
+    background-color: var(--darkGray);
+    border: 1px solid var(--gray);
+    border-radius: 12px;
+    min-height: 38px;
+    border-radius: 8px;
+    padding: 12px 12px;
+
+    &::placeholder {
+      color: #363636;
+    }
+
+    &:focus,
+    &:focus-visible,
+    &:active {
+      box-shadow: none;
+      outline: none;
+    }
   }
 }

@@ -54,9 +54,8 @@ export default function Navbar() {
 
       {/* Mobile Dropdown */}
       <div
-        className={`md:hidden overflow-hidden transition-[max-height] duration-300 bg-white shadow-md border-t ${
-          isOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
-        }`}
+        className={`md:hidden overflow-hidden transition-[max-height] duration-300 bg-white shadow-md border-t ${isOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+          }`}
       >
         <nav className="flex flex-col items-start px-5 gap-6 py-6">
           {menuLink.map((i, index) => (
@@ -93,7 +92,7 @@ export default function Navbar() {
 const menuLink = [
   { label: "Home", slug: "/" },
   { label: "Vehicles", slug: "/vehicles" },
-  { label: "Details", slug: "/details" },
   { label: "About Us", slug: "/about" },
   { label: "Contact Us", slug: "/contact" },
+  { label: "Posting", slug: "/posting" },
 ];

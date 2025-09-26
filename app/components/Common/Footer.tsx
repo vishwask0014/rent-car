@@ -13,7 +13,7 @@ import IconContainer from "../IconContainer";
 
 export default function Footer() {
   return (
-    <footer className="bg-white border-t mt-10">
+    <footer className="bg-white border-t mt-10 border-t-slate-100">
       <div className="container mx-auto px-4">
         <UpperBar />
         <BottomBar />
@@ -160,7 +160,7 @@ const SocailLinks = () => {
   );
 };
 
-const useFullLink = () => {};
+const useFullLink = () => { };
 
 const usefulLinks = [
   { label: "About us", href: "/about" },
