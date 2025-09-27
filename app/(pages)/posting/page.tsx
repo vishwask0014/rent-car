@@ -3,31 +3,22 @@
 import { db } from "@/app/firebase";
 import { ref, set } from "firebase/database";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
-
-type CarDetailsProps= {
-    arryName:string,
-    carName:string,
-    manufacuringYear:string,
-    KMdriven:string,
-    FuelType:string,
-    transmission:string,
-    segament:string,
-    uploadImage:string,
-    gallaryArray:string[]
-
-}
 
 export default function page({ path }: { path: string }) {
   const [carName, setCarName] = useState("");
   const [brand, setBrand] = useState("");
-  const [manufactuingYear, setmanufactuingYear] = useState("");
-  const [KMdriven, setKMdriven] = useState("");
-  const [FuelType, setFuelType] = useState("");
-  const [Segament, setSegament] = useState("");
+  const [manufacturingYear, setmanufacturingYear] = useState("");
+  const [kmDriven, setKMdriven] = useState("");
+  const [fuelType, setFuelType] = useState("");
+  const [segament, setSegament] = useState("");
   const [uploadImage, setuploadImage] = useState<string>("");
   const [transmission, setTransmission] = useState<string>("");
   const [gallaryArray, setGallaryArray] = useState<string[]>([]);
+  const router = useRouter();
+
+  //   console.log(transmission,"<<<<<<<<< transmission");
 
   // array to collect images upload by user
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -38,7 +29,44 @@ export default function page({ path }: { path: string }) {
     }
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = (
+    userId: string,
+    carName: string,
+    brand: string,
+    manufacturingYear: string,
+    kmDriven: string,
+    fuelType: string,
+    transmission: string,
+    segament: string,
+    gallaryArray: string[],
+  ) => {
+    const refrence = ref(db, "carDetails/" + userId);
+
+    set(refrence, {
+      carName: carName,
+      brand: brand,
+      manufacturingYear: manufacturingYear,
+      kmDriven: kmDriven,
+      fuelType: fuelType,
+      transmission: transmission,
+      segament: segament,
+      gallaryArray: gallaryArray,
+    });
+
+    console.log("data added");
+    alert("data added");
+    // clear value int he input states
+    setCarName("");
+    setBrand("");
+    setmanufacturingYear("");
+    setKMdriven("");
+    setFuelType("");
+    setTransmission("");
+    setSegament("");
+    setuploadImage("");
+    setGallaryArray([]);
+    router.reload();
+  };
 
   return (
     <>
@@ -63,15 +91,16 @@ export default function page({ path }: { path: string }) {
           </div>
 
           <div className="form-contianer">
-            <label>Manufactuing Year</label>
+            <label>Manufacturing Year</label>
             <input
               type="text"
               placeholder=""
-              onChange={(e: any) => setmanufactuingYear(e.target.value)}
+              onChange={(e: any) => setmanufacturingYear(e.target.value)}
             />
           </div>
 
           <div className="form-contianer">
+            <label>KM Driven</label>
             <input
               type="text"
               placeholder=""
@@ -113,7 +142,7 @@ export default function page({ path }: { path: string }) {
 
           <div className="w-full  form-contianer col-span-3">
             <label>Upload Images</label>
-            <input type="file" placeholder="" onChange={handleFileChange} />
+            <input type="file" multiple accept="image/*" onChange={handleFileChange} />
             {gallaryArray.length >= 1 && (
               <div className="col-span-3 border border-slate-300 w-full px-6 py-4 rounded-2xl ">
                 <div className="grid grid-cols-4">
@@ -132,8 +161,25 @@ export default function page({ path }: { path: string }) {
             )}
           </div>
         </div>
+
         <div className="flex justify-end">
-          <button className="btnPrimary" type="submit">
+          <button
+            onClick={() =>
+              handleSubmit(
+                `rent-${carName}`,
+                carName,
+                brand,
+                manufacturingYear,
+                kmDriven,
+                fuelType,
+                transmission,
+                segament,
+                gallaryArray
+              )
+            }
+            className="btnPrimary"
+            type="submit"
+          >
             Submit
           </button>
         </div>
