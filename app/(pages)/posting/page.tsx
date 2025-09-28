@@ -38,7 +38,7 @@ export default function page({ path }: { path: string }) {
     fuelType: string,
     transmission: string,
     segament: string,
-    gallaryArray: string[],
+    gallaryArray: string[]
   ) => {
     const refrence = ref(db, "carDetails/" + userId);
 
@@ -56,7 +56,7 @@ export default function page({ path }: { path: string }) {
     console.log("data added");
     alert("data added");
     // clear value int he input states
-    setCarName("");
+    // setCarName("");
     setBrand("");
     setmanufacturingYear("");
     setKMdriven("");
@@ -65,7 +65,7 @@ export default function page({ path }: { path: string }) {
     setSegament("");
     setuploadImage("");
     setGallaryArray([]);
-    router.reload();
+    router.refresh();
   };
 
   return (
@@ -119,30 +119,49 @@ export default function page({ path }: { path: string }) {
 
           <div className="form-contianer">
             <label>Transmission</label>
-            <select onChange={(e: any) => setTransmission(e.target.value)}>
-              <option disabled>Select transmission type</option>
-              <option>Manual</option>
-              <option>Automatic</option>
+            <select
+              onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                setTransmission(e.target.value)
+              }
+            >
+              <option value={""} disabled>
+                Select transmission type
+              </option>
+              <option value={"Manual"}>Manual</option>
+              <option value={"Automatic"}>Automatic</option>
             </select>
           </div>
 
           <div className="form-contianer">
             <label>Segament</label>
-            <select onChange={(e: any) => setSegament(e.target.value)}>
-              <option>SUV</option>
-              <option>Micro SUV</option>
-              <option>Sedan</option>
-              <option>Hatchback</option>
-              <option>Micro Hatchback</option>
-              <option>Sports</option>
-              <option>Limosuine</option>
-              <option>Not Aware</option>
+            <select
+              value={segament}
+              onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                setSegament(e.target.value)
+              }
+            >
+              <option value="" disabled>
+                Select segment
+              </option>
+              <option value="SUV">SUV</option>
+              <option value="Micro SUV">Micro SUV</option>
+              <option value="Sedan">Sedan</option>
+              <option value="Hatchback">Hatchback</option>
+              <option value="Micro Hatchback">Micro Hatchback</option>
+              <option value="Sports">Sports</option>
+              <option value="Limosuine">Limosuine</option>
+              <option value="Not Aware">Not Aware</option>
             </select>
           </div>
 
           <div className="w-full  form-contianer col-span-3">
             <label>Upload Images</label>
-            <input type="file" multiple accept="image/*" onChange={handleFileChange} />
+            <input
+              type="file"
+              multiple
+              accept="image/*"
+              onChange={handleFileChange}
+            />
             {gallaryArray.length >= 1 && (
               <div className="col-span-3 border border-slate-300 w-full px-6 py-4 rounded-2xl ">
                 <div className="grid grid-cols-4">
@@ -162,7 +181,7 @@ export default function page({ path }: { path: string }) {
           </div>
         </div>
 
-        <div className="flex justify-end">
+        <div className="flex justify-start">
           <button
             onClick={() =>
               handleSubmit(
@@ -177,7 +196,7 @@ export default function page({ path }: { path: string }) {
                 gallaryArray
               )
             }
-            className="btnPrimary"
+            className="btnPrimary !w-[200px] text-center"
             type="submit"
           >
             Submit
