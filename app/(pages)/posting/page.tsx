@@ -13,6 +13,7 @@ export default function page({ path }: { path: string }) {
   const [kmDriven, setKMdriven] = useState("");
   const [fuelType, setFuelType] = useState("");
   const [segament, setSegament] = useState("");
+  const [hourlyPrice, setHourlyPrice] = useState("");
   const [uploadImage, setuploadImage] = useState<string>("");
   const [transmission, setTransmission] = useState<string>("");
   const [gallaryArray, setGallaryArray] = useState<string[]>([]);
@@ -38,6 +39,7 @@ export default function page({ path }: { path: string }) {
     fuelType: string,
     transmission: string,
     segament: string,
+    hourlyPrice: string,
     gallaryArray: string[]
   ) => {
     const refrence = ref(db, "carDetails/" + userId);
@@ -50,6 +52,7 @@ export default function page({ path }: { path: string }) {
       fuelType: fuelType,
       transmission: transmission,
       segament: segament,
+      hourlyPrice: hourlyPrice,
       gallaryArray: gallaryArray,
     });
 
@@ -63,6 +66,7 @@ export default function page({ path }: { path: string }) {
     setFuelType("");
     setTransmission("");
     setSegament("");
+    setHourlyPrice("");
     setuploadImage("");
     setGallaryArray([]);
     router.refresh();
@@ -152,6 +156,11 @@ export default function page({ path }: { path: string }) {
               <option value="Limosuine">Limosuine</option>
               <option value="Not Aware">Not Aware</option>
             </select>
+          </div>
+
+          <div className="form-contianer">
+            <label>Hourly Price</label>
+            <input type="text" placeholder="₹ 0.00" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setHourlyPrice(e.target.value)} />
           </div>
 
           <div className="w-full  form-contianer col-span-3">

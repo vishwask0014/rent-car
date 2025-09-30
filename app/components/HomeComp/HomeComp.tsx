@@ -1,10 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Select from "react-select";
 import IconContainer from "../IconContainer";
 import FunctionCard from "../Common/FunctionCard";
 import Link from "next/link";
+import { db } from "@/app/firebase";
+import { get, ref } from "firebase/database";
 
 export function HeroSection() {
   const CarType = [
@@ -107,7 +109,36 @@ export function HeroSection() {
   );
 }
 
+type CarDetail = {
+  carName?: string;
+  brand?: string;
+  // add other properties as needed
+};
+
 export function DetailCard() {
+  const [data, setData] = useState<CarDetail[]>([]);
+  const dbRef = ref(db, 'carDetails/');
+
+  useEffect(() => {
+    async function GetData() {
+      const snapShot = await get(dbRef)
+      const listing = snapShot.val()
+
+      if (!listing) {
+        console.error('No listing present');
+        setData([]);
+      } else {
+        setData(Object.values(listing));
+      }
+    }
+
+    GetData()
+  }, [dbRef])
+
+
+  console.log(data, "data>>>>");
+
+
   return (
     <>
       <div className="container mx-auto relative py-10 lg:py-20">
@@ -123,10 +154,21 @@ export function DetailCard() {
             View All <IconContainer name="chevronRight" />
           </Link>
         </div>
-        {/* Static Car Card */}
 
-        <div className="grid gap-6  md:grid-cols-2 lg:grid-cols-3">
-          <FunctionCard />
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+
+          {
+            data.map((i, index) => {
+              return (
+                <>
+
+                  <FunctionCard />
+
+                </>
+              )
+            })
+          }
+
         </div>
       </div>
     </>
