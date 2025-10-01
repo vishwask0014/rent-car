@@ -17,6 +17,7 @@ export default function page({ path }: { path: string }) {
   const [uploadImage, setuploadImage] = useState<string>("");
   const [transmission, setTransmission] = useState<string>("");
   const [gallaryArray, setGallaryArray] = useState<string[]>([]);
+  const [description, setDescription] = useState("");
   const router = useRouter();
 
   // array to collect images upload by user
@@ -38,6 +39,7 @@ export default function page({ path }: { path: string }) {
     transmission: string,
     segament: string,
     hourlyPrice: string,
+    description: string,
     gallaryArray: string[]
   ) => {
     const refrence = ref(db, "carDetails/" + userId);
@@ -51,6 +53,7 @@ export default function page({ path }: { path: string }) {
       transmission: transmission,
       segament: segament,
       hourlyPrice: hourlyPrice,
+      description: description,
       gallaryArray: gallaryArray,
     });
 
@@ -67,6 +70,7 @@ export default function page({ path }: { path: string }) {
     setHourlyPrice("");
     setuploadImage("");
     setGallaryArray([]);
+    setDescription("");
     router.refresh();
   };
 
@@ -78,7 +82,7 @@ export default function page({ path }: { path: string }) {
             <label>Car Name</label>
             <input
               type="text"
-              placeholder=""
+              placeholder="e.g., Swift Dzire"
               onChange={(e: any) => setCarName(e.target.value)}
             />
           </div>
@@ -88,6 +92,7 @@ export default function page({ path }: { path: string }) {
             <input
               type="text"
               className="border-slate-300"
+              placeholder="e.g., Maruti Suzuki"
               onChange={(e: any) => setBrand(e.target.value)}
             />
           </div>
@@ -96,7 +101,7 @@ export default function page({ path }: { path: string }) {
             <label>Manufacturing Year</label>
             <input
               type="text"
-              placeholder=""
+              placeholder="e.g., 2021"
               onChange={(e: any) => setmanufacturingYear(e.target.value)}
             />
           </div>
@@ -105,7 +110,7 @@ export default function page({ path }: { path: string }) {
             <label>KM Driven</label>
             <input
               type="text"
-              placeholder=""
+              placeholder="e.g., 25000"
               onChange={(e: any) => setKMdriven(e.target.value)}
             />
           </div>
@@ -114,7 +119,7 @@ export default function page({ path }: { path: string }) {
             <label>Fuel Type</label>
             <input
               type="text"
-              placeholder=""
+              placeholder="e.g., Petrol, Diesel, CNG, EV"
               onChange={(e: any) => setFuelType(e.target.value)}
             />
           </div>
@@ -122,6 +127,7 @@ export default function page({ path }: { path: string }) {
           <div className="form-contianer">
             <label>Transmission</label>
             <select
+              value={transmission}
               onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
                 setTransmission(e.target.value)
               }
@@ -163,6 +169,17 @@ export default function page({ path }: { path: string }) {
               placeholder="₹ 0.00"
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setHourlyPrice(e.target.value)
+              }
+            />
+          </div>
+
+          <div className="form-contianer col-span-3">
+            <label>Description</label>
+            <textarea
+              placeholder="Describe the car, features, condition, pickup details, etc."
+              className="w-full border rounded-md p-3 !min-h-[120px]"
+              onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+                setDescription(e.target.value)
               }
             />
           </div>
@@ -219,6 +236,7 @@ export default function page({ path }: { path: string }) {
                 transmission,
                 segament,
                 hourlyPrice,
+                description,
                 gallaryArray
               )
             }
