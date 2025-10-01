@@ -110,34 +110,46 @@ export function HeroSection() {
 }
 
 type CarDetail = {
+  id: string | number;
   carName?: string;
   brand?: string;
-  // add other properties as needed
+  manufacturingYear?: string;
+  kmDriven?: string;
+  fuelType?: string;
+  transmission?: string;
+  segament?: string;
+  hourlyPrice?: string | number;
+  gallaryArray?: string[];
 };
 
 export function DetailCard() {
   const [data, setData] = useState<CarDetail[]>([]);
-  const dbRef = ref(db, 'carDetails/');
+  const dbRef = ref(db, "carDetails/");
 
   useEffect(() => {
     async function GetData() {
-      const snapShot = await get(dbRef)
-      const listing = snapShot.val()
+      const snapShot = await get(dbRef);
+      const listing = snapShot.val();
 
       if (!listing) {
-        console.error('No listing present');
+        console.error("No listing present");
         setData([]);
       } else {
-        setData(Object.values(listing));
+        // preserve keys as ids
+        const normalized: CarDetail[] = Object.entries(listing).map(
+          ([key, value]: any) => ({
+            id: key,
+            ...value,
+          })
+        );
+        setData(normalized);
       }
     }
 
-    GetData()
-  }, [dbRef])
-
+    GetData();
+  }, [dbRef]);
 
   console.log(data, "data>>>>");
-
 
   return (
     <>
@@ -156,19 +168,24 @@ export function DetailCard() {
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-
-          {
-            data.map((i, index) => {
-              return (
-                <>
-
-                  <FunctionCard />
-
-                </>
-              )
-            })
-          }
-
+          {data.map((car) => (
+            <FunctionCard
+              key={car.id}
+              image={
+                (car.gallaryArray && car.gallaryArray[0]) ||
+                "/static/img/Img.png"
+              }
+              title={car.carName || "Car"}
+              price={Number(car.hourlyPrice) || 0}
+              type={car.segament || "Sedan"}
+              duration={"per hour"}
+              id={car.id}
+              features={[
+                { name: "gearType", label: car.transmission || "-" },
+                { name: "fuel", label: car.fuelType || "-" },
+              ]}
+            />
+          ))}
         </div>
       </div>
     </>

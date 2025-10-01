@@ -202,6 +202,7 @@ export default function page({ path }: { path: string }) {
                 fuelType,
                 transmission,
                 segament,
+                hourlyPrice,
                 gallaryArray
               )
             }
