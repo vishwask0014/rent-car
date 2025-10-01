@@ -19,8 +19,6 @@ export default function page({ path }: { path: string }) {
   const [gallaryArray, setGallaryArray] = useState<string[]>([]);
   const router = useRouter();
 
-  //   console.log(transmission,"<<<<<<<<< transmission");
-
   // array to collect images upload by user
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -160,37 +158,55 @@ export default function page({ path }: { path: string }) {
 
           <div className="form-contianer">
             <label>Hourly Price</label>
-            <input type="text" placeholder="₹ 0.00" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setHourlyPrice(e.target.value)} />
+            <input
+              type="text"
+              placeholder="₹ 0.00"
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setHourlyPrice(e.target.value)
+              }
+            />
           </div>
 
           <div className="w-full  form-contianer col-span-3">
-            <label>Upload Images</label>
-            <input
-              type="file"
-              multiple
-              accept="image/*"
-              onChange={handleFileChange}
-            />
-            {gallaryArray.length >= 1 && (
-              <div className="col-span-3 border border-slate-300 w-full px-6 py-4 rounded-2xl ">
-                <div className="grid grid-cols-4">
-                  {gallaryArray.map((i: string, index: React.Key) => (
-                    <Image
-                      key={index}
-                      alt="img"
-                      height={190}
-                      width={190}
-                      className="object-cover rounded-md border-2 border-slate-300"
-                      src={i}
-                    />
-                  ))}
+            <div className="flex gap-4">
+              <div>
+                {/* <label className="mb-2">Upload Images</label> */}
+                <div className="border flex justify-center items-center border-(--primary)/80 bg-(--primary)/10 px-6 py-4 rounded-2xl w-[220px] h-[220px] relative overflow-hidden">
+                  
+                  <div className="text-xl text-center font-medium text-(--primary)"><i className="fa-solid fa-upload"></i> <br />Upload Images</div>
+                  <input
+                    type="file"
+                    multiple
+                    className="absolute z-10 top-0 left-0 w-full h-full opacity-0 cursor-pointer"
+                    accept="image/*"
+                    onChange={handleFileChange}
+                  />
                 </div>
               </div>
-            )}
+              <div>
+                {gallaryArray.length >= 1 && (
+                  <div className="col-span-3 ">
+                    <div className="flex flex-wrap gap-4">
+                      {gallaryArray.map((i: string, index: React.Key) => (
+                        <div className="relative w-[220px] h-[220px]">
+                          <Image
+                            key={index}
+                            alt="img"
+                            fill
+                            className="object-cover rounded-md border-2 border-slate-300"
+                            src={i}
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="flex justify-start">
+        <div className="flex justify-center">
           <button
             onClick={() =>
               handleSubmit(
@@ -206,7 +222,7 @@ export default function page({ path }: { path: string }) {
                 gallaryArray
               )
             }
-            className="btnPrimary !w-[200px] text-center"
+            className="btnPrimary w-1/2 text-center"
             type="submit"
           >
             Submit
