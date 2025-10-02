@@ -112,6 +112,7 @@ export function HeroSection() {
 type CarDetail = {
   id: string | number;
   carName?: string;
+  title?: string;
   brand?: string;
   manufacturingYear?: string;
   kmDriven?: string;
@@ -119,6 +120,7 @@ type CarDetail = {
   transmission?: string;
   segament?: string;
   hourlyPrice?: string | number;
+  numberOfGear?: string;
   gallaryArray?: string[];
 };
 
@@ -145,11 +147,8 @@ export function DetailCard() {
         setData(normalized);
       }
     }
-
     GetData();
   }, [dbRef]);
-
-  console.log(data, "data>>>>");
 
   return (
     <>
@@ -170,20 +169,20 @@ export function DetailCard() {
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {data.map((car) => (
             <FunctionCard
+              data={{
+                carName: car.carName || "-",
+                brand: car.brand || "-",
+                manufacturingYear: car.manufacturingYear || "-",
+                kmDriven: car.kmDriven || "-",
+                fuelType: car.fuelType || "-",
+                transmission: car.transmission || "-",
+                segament: car.segament || "-",
+                hourlyPrice: car.hourlyPrice || "-",
+                numberOfGear: car.numberOfGear || "-",
+                gallaryArray: car.gallaryArray || [],
+                description: car.description || "-",
+              }}
               key={car.id}
-              image={
-                (car.gallaryArray && car.gallaryArray[0]) ||
-                "/static/img/Img.png"
-              }
-              title={car.carName || "Car"}
-              price={Number(car.hourlyPrice) || 0}
-              type={car.segament || "Sedan"}
-              duration={"per hour"}
-              id={car.id}
-              features={[
-                { name: "gearType", label: car.transmission || "-" },
-                { name: "fuel", label: car.fuelType || "-" },
-              ]}
             />
           ))}
         </div>

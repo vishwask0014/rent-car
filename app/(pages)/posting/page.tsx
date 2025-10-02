@@ -13,6 +13,7 @@ export default function page({ path }: { path: string }) {
   const [kmDriven, setKMdriven] = useState("");
   const [fuelType, setFuelType] = useState("");
   const [segament, setSegament] = useState("");
+  const [numberOfGear, setNumberOfGear] = useState('')
   const [hourlyPrice, setHourlyPrice] = useState("");
   const [uploadImage, setuploadImage] = useState<string>("");
   const [transmission, setTransmission] = useState<string>("");
@@ -37,6 +38,7 @@ export default function page({ path }: { path: string }) {
     kmDriven: string,
     fuelType: string,
     transmission: string,
+    numberOfGear: string,
     segament: string,
     hourlyPrice: string,
     description: string,
@@ -51,6 +53,7 @@ export default function page({ path }: { path: string }) {
       kmDriven: kmDriven,
       fuelType: fuelType,
       transmission: transmission,
+      numberOfGear: numberOfGear,
       segament: segament,
       hourlyPrice: hourlyPrice,
       description: description,
@@ -66,6 +69,7 @@ export default function page({ path }: { path: string }) {
     setKMdriven("");
     setFuelType("");
     setTransmission("");
+    setNumberOfGear("");
     setSegament("");
     setHourlyPrice("");
     setuploadImage("");
@@ -138,6 +142,16 @@ export default function page({ path }: { path: string }) {
               <option value={"Manual"}>Manual</option>
               <option value={"Automatic"}>Automatic</option>
             </select>
+          </div>
+
+          <div className="form-contianer">
+            <label>No. of Gear</label>
+          <input
+            type="text"
+            placeholder="e.g., 5"
+            value={numberOfGear}
+            onChange={(e: any) => setNumberOfGear(e.target.value)}
+          />
           </div>
 
           <div className="form-contianer">
@@ -234,6 +248,7 @@ export default function page({ path }: { path: string }) {
                 kmDriven,
                 fuelType,
                 transmission,
+                numberOfGear,
                 segament,
                 hourlyPrice,
                 description,

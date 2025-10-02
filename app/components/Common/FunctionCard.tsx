@@ -1,60 +1,124 @@
-import React from "react";
+"use client";
+import React, { useEffect } from "react";
 import IconContainer from "../IconContainer";
 import Link from "next/link";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import Image from "next/image";
+import { Autoplay } from "swiper/modules";
+import "swiper/css/autoplay";
 
 type Feature = { name: string; label: string };
 type FunctionCardProps = {
-  image?: string;
-  title?: string;
-  price?: number;
-  type?: string;
-  duration?: string;
-  id?: string | number;
-  features?: Feature[];
+  data: {
+    carName: string;
+    brand: string;
+    manufacturingYear: string;
+    kmDriven: string;
+    fuelType: string;
+    transmission: string;
+    segament: string;
+    hourlyPrice: string;
+    description?: string;
+    numberOfGear?: string;
+    description?:string
+    gallaryArray: string[];
+  };
 };
 
-function FunctionCard({
-  image = "/static/img/Img.png",
-  title = "Mercedes",
-  price = 25,
-  type = "Sedan",
-  duration = "per hour",
-  id = 1 as string | number,
-  features = [] as Feature[],
-}: FunctionCardProps) {
+function FunctionCard({ data }: FunctionCardProps) {
+  useEffect(() => {
+    console.log(data.gallaryArray);
+  }, []);
   return (
     <article className="bg-(--gray) rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col overflow-hidden">
       {/* Car Image */}
-      <img
-        src={image}
-        alt={title}
-        className="w-full h-[200px] object-cover bg-white"
-      />
+      <div className="max-w-[500px]">
+        <Swiper
+          autoplay={{ delay: 8000, disableOnInteraction: false }}
+          spaceBetween={10}
+          slidesPerView={1}
+          loop={(data?.gallaryArray?.length ?? 0) > 1}
+          observer
+          observeParents
+          modules={[Autoplay]}
+          className="w-full"
+        >
+          {data?.gallaryArray?.map((src, index) => {
+            // useEffect(() => {
+            //   console.log(src, ">>>>>");
+            // }, []);
+            return (
+              <SwiperSlide key={`${index}-${src}`}>
+                <div className="relative w-full h-[320px]">
+                  <Image
+                    fill
+                    src={src}
+                    alt={`img-${index}`}
+                    unoptimized
+                    className="w-full object-cover bg-white"
+                  />
+                </div>
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+      </div>
       <div className="p-6 flex-1 flex flex-col">
         {/* Title + Price */}
         <div className="flex justify-between items-start mb-1">
-          <h3 className="text-lg font-semibold text-gray-800 line-clamp-1">{title}</h3>
-          <span className="text-xl font-bold text-(--secondary)">₹{price}</span>
+          <h3 className="text-lg font-semibold text-gray-800 line-clamp-1 capitalize">
+            {data.carName}
+          </h3>
+          <span className="text-xl font-bold text-(--primary)">
+            ₹{data.hourlyPrice}
+          </span>
         </div>
 
         {/* Type + Duration */}
         <div className="flex justify-between items-center text-sm text-gray-500 mb-4">
-          <span>{type}</span>
-          <span className="text-gray-400">{duration}</span>
+          <span className="capitalize">{data.brand}</span>
+          <span className="text-gray-400">Hourly</span>
         </div>
 
+        {/* {data.manufacturingYear} */}
+
         {/* Features */}
-        <div className="flex flex-wrap gap-4 justify-between mb-6">
-          {features.map((feature, idx) => (
-            <div key={idx} className="flex items-center gap-1.5 text-gray-700">
-              <IconContainer name={feature.name as any} />
-              <span className="text-sm text-slate-600">{feature.label}</span>
-            </div>
-          ))}
+        <div className="flex flex-wrap gap-4 justify-between mb-6 mt-3">
+          <div className="flex items-center gap-1.5 text-gray-700">
+            <IconContainer name={"gearType"} />
+            <span className="text-sm text-slate-600">
+              {data.numberOfGear}, {data.transmission}
+            </span>
+          </div>
+
+          <div className="flex items-center gap-1.5 text-gray-700">
+            <IconContainer name={"fuel"} />
+            <span className="text-sm text-slate-600">{data.fuelType}</span>
+          </div>
+
+          <div className="flex items-center gap-1.5 text-gray-700">
+            <IconContainer name={"snowflake"} />
+            <span className="text-sm text-slate-600">AC</span>
+          </div>
+
+          <div className="flex items-center gap-1.5 text-gray-700">
+            <IconContainer name={"calendar"} />
+            <span className="text-sm text-slate-600">{data.manufacturingYear}</span>
+          </div>
+        </div>
+
+        <div className="mt-1 mb-6">
+          <p className="text-sm text-slate-600 line-clamp-3">{data.description}</p>
         </div>
 
         {/* Button */}
-        <Link href={`/${id}`} className="btnPrimary w-full text-center block mt-auto">View Details</Link>
+        <Link
+          href={`/${data.carName}`}
+          className="btnPrimary w-full text-center block mt-auto"
+        >
+          View Details
+        </Link>
       </div>
     </article>
   );

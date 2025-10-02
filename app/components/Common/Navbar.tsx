@@ -12,9 +12,9 @@ export default function Navbar() {
     <header className="sticky top-0 left-0 w-full bg-white shadow-sm z-50">
       <div className="w-full flex justify-between items-center py-4 container mx-auto px-4">
         {/* Logo */}
-        <div className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2">
           <IconContainer name="logo" />
-        </div>
+        </Link>
 
         {/* Desktop Menu */}
         <nav className="hidden md:flex gap-8 items-center">
