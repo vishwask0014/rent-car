@@ -137,7 +137,10 @@ export function DetailCard() {
         // preserve keys as ids
         const normalized: CarDetail[] = Object.entries(
           listing as Record<string, unknown>
-        ).map(([key, value]) => ({ id: key, ...(value as Partial<CarDetail>) }));
+        ).map(([key, value]) => ({
+          id: key,
+          ...(value as Partial<CarDetail>),
+        }));
         setData(normalized);
       }
     }

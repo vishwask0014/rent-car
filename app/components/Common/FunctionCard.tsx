@@ -27,6 +27,9 @@ type FunctionCardProps = {
 function FunctionCard({ data }: FunctionCardProps) {
   return (
     <article className="bg-(--gray) rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col overflow-hidden">
+      <div className="w-fit h-fit text-sm font-semibold text-(--primary) bg-(--primary)/10 px-2 py-1 rounded-full absolute top-2 right-2">
+        New
+      </div>
       {/* Car Image */}
       <div className="max-w-[500px]">
         <Swiper
@@ -99,12 +102,16 @@ function FunctionCard({ data }: FunctionCardProps) {
 
           <div className="flex items-center gap-1.5 text-gray-700">
             <IconContainer name={"calendar"} />
-            <span className="text-sm text-slate-600">{data.manufacturingYear}</span>
+            <span className="text-sm text-slate-600">
+              {data.manufacturingYear}
+            </span>
           </div>
         </div>
 
         <div className="mt-1 mb-6">
-          <p className="text-sm text-slate-600 line-clamp-3">{data.description}</p>
+          <p className="text-sm text-slate-600 line-clamp-3">
+            {data.description}
+          </p>
         </div>
 
         {/* Button */}

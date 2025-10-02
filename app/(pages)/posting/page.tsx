@@ -5,6 +5,8 @@ import { ref, set } from "firebase/database";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+import { toast, ToastContainer } from "react-toastify";
 
 export default function Page() {
   const [carName, setCarName] = useState("");
@@ -13,12 +15,14 @@ export default function Page() {
   const [kmDriven, setKMdriven] = useState("");
   const [fuelType, setFuelType] = useState("");
   const [segament, setSegament] = useState("");
-  const [numberOfGear, setNumberOfGear] = useState('')
+  const [numberOfGear, setNumberOfGear] = useState("");
   const [hourlyPrice, setHourlyPrice] = useState("");
   const [transmission, setTransmission] = useState<string>("");
   const [gallaryArray, setGallaryArray] = useState<string[]>([]);
   const [description, setDescription] = useState("");
   const router = useRouter();
+
+  const uniqueKey = uuidv4();
 
   // array to collect images upload by user
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,6 +34,7 @@ export default function Page() {
 
   const handleSubmit = (
     userId: string,
+    id: string,
     carName: string,
     brand: string,
     manufacturingYear: string,
@@ -45,6 +50,7 @@ export default function Page() {
     const refrence = ref(db, "carDetails/" + userId);
 
     set(refrence, {
+      id: uniqueKey,
       carName: carName,
       brand: brand,
       manufacturingYear: manufacturingYear,
@@ -59,7 +65,7 @@ export default function Page() {
     });
 
     console.log("data added");
-    alert("data added");
+    toast("Data Added Successfully");
     // clear value int he input states
     // setCarName("");
     setBrand("");
@@ -75,57 +81,82 @@ export default function Page() {
     router.refresh();
   };
 
+  const HandleCopy = () => {
+    navigator.clipboard.writeText(uniqueKey);
+    toast("Copied To Clipboard");
+  };
   return (
     <>
+      <ToastContainer />
       <div className="container mx-auto px-4 bg-white">
         <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-x-8 gap-y-8 py-12">
-          <div className="form-contianer">
+          <div className="form-container">
+            <label>Unique Key</label>
+            <div className="relative w-full">
+              <input type="text" value={uniqueKey} readOnly />
+              <button onClick={HandleCopy} className="absolute right-2 top-2">
+                <i className="fa-solid fa-copy"></i>
+              </button>
+            </div>
+          </div>
+
+          <div className="form-container">
             <label>Car Name</label>
             <input
               type="text"
               placeholder="e.g., Swift Dzire"
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setCarName(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setCarName(e.target.value)
+              }
             />
           </div>
 
-          <div className="form-contianer">
+          <div className="form-container">
             <label>Brand Name</label>
             <input
               type="text"
               className="border-slate-300"
               placeholder="e.g., Maruti Suzuki"
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setBrand(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setBrand(e.target.value)
+              }
             />
           </div>
 
-          <div className="form-contianer">
+          <div className="form-container">
             <label>Manufacturing Year</label>
             <input
               type="text"
               placeholder="e.g., 2021"
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setmanufacturingYear(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setmanufacturingYear(e.target.value)
+              }
             />
           </div>
 
-          <div className="form-contianer">
+          <div className="form-container">
             <label>KM Driven</label>
             <input
               type="text"
               placeholder="e.g., 25000"
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setKMdriven(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setKMdriven(e.target.value)
+              }
             />
           </div>
 
-          <div className="form-contianer">
+          <div className="form-container">
             <label>Fuel Type</label>
             <input
               type="text"
               placeholder="e.g., Petrol, Diesel, CNG, EV"
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFuelType(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setFuelType(e.target.value)
+              }
             />
           </div>
 
-          <div className="form-contianer">
+          <div className="form-container">
             <label>Transmission</label>
             <select
               value={transmission}
@@ -141,17 +172,19 @@ export default function Page() {
             </select>
           </div>
 
-          <div className="form-contianer">
+          <div className="form-container">
             <label>No. of Gear</label>
-          <input
-            type="text"
-            placeholder="e.g., 5"
-            value={numberOfGear}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNumberOfGear(e.target.value)}
-          />
+            <input
+              type="text"
+              placeholder="e.g., 5"
+              value={numberOfGear}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                setNumberOfGear(e.target.value)
+              }
+            />
           </div>
 
-          <div className="form-contianer">
+          <div className="form-container">
             <label>Segament</label>
             <select
               value={segament}
@@ -173,7 +206,7 @@ export default function Page() {
             </select>
           </div>
 
-          <div className="form-contianer">
+          <div className="form-container">
             <label>Hourly Price</label>
             <input
               type="text"
@@ -184,7 +217,7 @@ export default function Page() {
             />
           </div>
 
-          <div className="form-contianer col-span-3">
+          <div className="form-container col-span-3">
             <label>Description</label>
             <textarea
               placeholder="Describe the car, features, condition, pickup details, etc."
@@ -195,13 +228,15 @@ export default function Page() {
             />
           </div>
 
-          <div className="w-full  form-contianer col-span-3">
+          <div className="w-full  form-container col-span-3">
             <div className="flex gap-4">
               <div>
                 {/* <label className="mb-2">Upload Images</label> */}
                 <div className="border flex justify-center items-center border-(--primary)/80 bg-(--primary)/10 px-6 py-4 rounded-2xl w-[220px] h-[220px] relative overflow-hidden">
-                  
-                  <div className="text-xl text-center font-medium text-(--primary)"><i className="fa-solid fa-upload"></i> <br />Upload Images</div>
+                  <div className="text-xl text-center font-medium text-(--primary)">
+                    <i className="fa-solid fa-upload"></i> <br />
+                    Upload Images
+                  </div>
                   <input
                     type="file"
                     multiple
@@ -216,7 +251,10 @@ export default function Page() {
                   <div className="col-span-3 ">
                     <div className="flex flex-wrap gap-4">
                       {gallaryArray.map((i: string, index: number) => (
-                        <div className="relative w-[220px] h-[220px]" key={index}>
+                        <div
+                          className="relative w-[220px] h-[220px]"
+                          key={index}
+                        >
                           <Image
                             alt="img"
                             fill
@@ -238,6 +276,7 @@ export default function Page() {
             onClick={() =>
               handleSubmit(
                 `rent-${carName}`,
+                uniqueKey,
                 carName,
                 brand,
                 manufacturingYear,
