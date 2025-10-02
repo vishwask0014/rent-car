@@ -18,7 +18,7 @@ type Car = {
 
 const car: Car[] = carsData
 
-function page() {
+function Page() {
     const pathName = useParams()
     const carDetail = car.filter((car) => car.id === Number(pathName.id))
     return (
@@ -31,4 +31,4 @@ function page() {
     )
 }
 
-export default page
+export default Page

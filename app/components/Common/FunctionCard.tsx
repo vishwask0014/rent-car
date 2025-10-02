@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import IconContainer from "../IconContainer";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -8,7 +8,6 @@ import Image from "next/image";
 import { Autoplay } from "swiper/modules";
 import "swiper/css/autoplay";
 
-type Feature = { name: string; label: string };
 type FunctionCardProps = {
   data: {
     carName: string;
@@ -21,15 +20,11 @@ type FunctionCardProps = {
     hourlyPrice: string;
     description?: string;
     numberOfGear?: string;
-    description?:string
     gallaryArray: string[];
   };
 };
 
 function FunctionCard({ data }: FunctionCardProps) {
-  useEffect(() => {
-    console.log(data.gallaryArray);
-  }, []);
   return (
     <article className="bg-(--gray) rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col overflow-hidden">
       {/* Car Image */}

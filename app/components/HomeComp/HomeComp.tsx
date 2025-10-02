@@ -16,11 +16,7 @@ export function HeroSection() {
     { value: "van", label: "Van" },
   ];
 
-  const options = [
-    { value: "chocolate", label: "Chocolate" },
-    { value: "strawberry", label: "Strawberry" },
-    { value: "vanilla", label: "Vanilla" },
-  ];
+  // removed unused example options
 
   const [selectedOption, setSelectedOption] = useState<{
     value: string;
@@ -122,6 +118,7 @@ type CarDetail = {
   hourlyPrice?: string | number;
   numberOfGear?: string;
   gallaryArray?: string[];
+  description?: string;
 };
 
 export function DetailCard() {
@@ -133,17 +130,14 @@ export function DetailCard() {
       const snapShot = await get(dbRef);
       const listing = snapShot.val();
 
-      if (!listing) {
+      if (!listing || typeof listing !== "object") {
         console.error("No listing present");
         setData([]);
       } else {
         // preserve keys as ids
-        const normalized: CarDetail[] = Object.entries(listing).map(
-          ([key, value]: any) => ({
-            id: key,
-            ...value,
-          })
-        );
+        const normalized: CarDetail[] = Object.entries(
+          listing as Record<string, unknown>
+        ).map(([key, value]) => ({ id: key, ...(value as Partial<CarDetail>) }));
         setData(normalized);
       }
     }
@@ -177,7 +171,7 @@ export function DetailCard() {
                 fuelType: car.fuelType || "-",
                 transmission: car.transmission || "-",
                 segament: car.segament || "-",
-                hourlyPrice: car.hourlyPrice || "-",
+                hourlyPrice: String(car.hourlyPrice ?? "-"),
                 numberOfGear: car.numberOfGear || "-",
                 gallaryArray: car.gallaryArray || [],
                 description: car.description || "-",

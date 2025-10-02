@@ -160,7 +160,6 @@ const SocailLinks = () => {
   );
 };
 
-const useFullLink = () => { };
 
 const usefulLinks = [
   { label: "About us", href: "/about" },

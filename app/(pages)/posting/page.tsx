@@ -4,9 +4,9 @@ import { db } from "@/app/firebase";
 import { ref, set } from "firebase/database";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
-export default function page({ path }: { path: string }) {
+export default function Page() {
   const [carName, setCarName] = useState("");
   const [brand, setBrand] = useState("");
   const [manufacturingYear, setmanufacturingYear] = useState("");
@@ -15,7 +15,6 @@ export default function page({ path }: { path: string }) {
   const [segament, setSegament] = useState("");
   const [numberOfGear, setNumberOfGear] = useState('')
   const [hourlyPrice, setHourlyPrice] = useState("");
-  const [uploadImage, setuploadImage] = useState<string>("");
   const [transmission, setTransmission] = useState<string>("");
   const [gallaryArray, setGallaryArray] = useState<string[]>([]);
   const [description, setDescription] = useState("");
@@ -25,7 +24,6 @@ export default function page({ path }: { path: string }) {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      setuploadImage(URL.createObjectURL(file));
       setGallaryArray((prev) => [...prev, URL.createObjectURL(file)]);
     }
   };
@@ -72,7 +70,6 @@ export default function page({ path }: { path: string }) {
     setNumberOfGear("");
     setSegament("");
     setHourlyPrice("");
-    setuploadImage("");
     setGallaryArray([]);
     setDescription("");
     router.refresh();
@@ -87,7 +84,7 @@ export default function page({ path }: { path: string }) {
             <input
               type="text"
               placeholder="e.g., Swift Dzire"
-              onChange={(e: any) => setCarName(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setCarName(e.target.value)}
             />
           </div>
 
@@ -97,7 +94,7 @@ export default function page({ path }: { path: string }) {
               type="text"
               className="border-slate-300"
               placeholder="e.g., Maruti Suzuki"
-              onChange={(e: any) => setBrand(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setBrand(e.target.value)}
             />
           </div>
 
@@ -106,7 +103,7 @@ export default function page({ path }: { path: string }) {
             <input
               type="text"
               placeholder="e.g., 2021"
-              onChange={(e: any) => setmanufacturingYear(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setmanufacturingYear(e.target.value)}
             />
           </div>
 
@@ -115,7 +112,7 @@ export default function page({ path }: { path: string }) {
             <input
               type="text"
               placeholder="e.g., 25000"
-              onChange={(e: any) => setKMdriven(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setKMdriven(e.target.value)}
             />
           </div>
 
@@ -124,7 +121,7 @@ export default function page({ path }: { path: string }) {
             <input
               type="text"
               placeholder="e.g., Petrol, Diesel, CNG, EV"
-              onChange={(e: any) => setFuelType(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFuelType(e.target.value)}
             />
           </div>
 
@@ -150,7 +147,7 @@ export default function page({ path }: { path: string }) {
             type="text"
             placeholder="e.g., 5"
             value={numberOfGear}
-            onChange={(e: any) => setNumberOfGear(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNumberOfGear(e.target.value)}
           />
           </div>
 
@@ -218,10 +215,9 @@ export default function page({ path }: { path: string }) {
                 {gallaryArray.length >= 1 && (
                   <div className="col-span-3 ">
                     <div className="flex flex-wrap gap-4">
-                      {gallaryArray.map((i: string, index: React.Key) => (
-                        <div className="relative w-[220px] h-[220px]">
+                      {gallaryArray.map((i: string, index: number) => (
+                        <div className="relative w-[220px] h-[220px]" key={index}>
                           <Image
-                            key={index}
                             alt="img"
                             fill
                             className="object-cover rounded-md border-2 border-slate-300"
