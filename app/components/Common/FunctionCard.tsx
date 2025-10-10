@@ -10,6 +10,7 @@ import "swiper/css/autoplay";
 
 type FunctionCardProps = {
   data: {
+    id: string;
     carName: string;
     brand: string;
     manufacturingYear: string;
@@ -25,6 +26,8 @@ type FunctionCardProps = {
 };
 
 function FunctionCard({ data }: FunctionCardProps) {
+  console.log(data.id, ">>>> data");
+
   return (
     <article className="bg-(--gray) rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col overflow-hidden">
       <div className="w-fit h-fit text-sm font-semibold text-(--primary) bg-(--primary)/10 px-2 py-1 rounded-full absolute top-2 right-2">
@@ -43,9 +46,6 @@ function FunctionCard({ data }: FunctionCardProps) {
           className="w-full"
         >
           {data?.gallaryArray?.map((src, index) => {
-            // useEffect(() => {
-            //   console.log(src, ">>>>>");
-            // }, []);
             return (
               <SwiperSlide key={`${index}-${src}`}>
                 <div className="relative w-full h-[320px]">
@@ -116,7 +116,7 @@ function FunctionCard({ data }: FunctionCardProps) {
 
         {/* Button */}
         <Link
-          href={`/${data.carName}`}
+          href={`/${data.id}`}
           className="btnPrimary w-full text-center block mt-auto"
         >
           View Details

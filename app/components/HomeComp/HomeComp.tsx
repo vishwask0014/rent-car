@@ -167,6 +167,7 @@ export function DetailCard() {
           {data.map((car) => (
             <FunctionCard
               data={{
+                id: String(car.id),
                 carName: car.carName || "-",
                 brand: car.brand || "-",
                 manufacturingYear: car.manufacturingYear || "-",
