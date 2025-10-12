@@ -14,6 +14,7 @@ function page() {
   const handleLogin = async () => {
     try {
       const user = await signInWithEmailAndPassword(auth, userName, password);
+      console.log(user, ">>> user detail");
       alert(user.user.email + "Welcome");
       router.push("/");
     } catch (error) {
