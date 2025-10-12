@@ -1,16 +1,18 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaPhoneAlt, FaBars, FaTimes } from "react-icons/fa";
 import IconContainer from "../IconContainer";
 import { signOut } from "firebase/auth";
 import { auth } from "@/app/firebase";
 import { useRouter } from "next/navigation";
+import { useAuthContext } from "@/app/Context/AuthContext";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
+  const { user } = useAuthContext();
 
   const handleLogout = async () => {
     signOut(auth)
@@ -44,36 +46,42 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* Contact Section (Desktop) */}
-        <Link
-          href="tel:+9962471680"
-          className="hidden md:flex items-center gap-3 hover:opacity-80"
-        >
-          <div className="text-sm leading-tight">
-            <span className="block text-gray-500">Need help?</span>
-            <span className="font-semibold text-black">+996 247-1680</span>
-          </div>
-          <div className="bg-(--primary) w-10 h-10 rounded-full flex justify-center items-center">
-            <FaPhoneAlt className="text-white" />
-          </div>
-        </Link>
-
         {/* Mobile Menu Button */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-2xl text-gray-700"
-        >
-          {isOpen ? <FaTimes /> : <FaBars />}
-        </button>
+        <div className="flex items-center gap-2">
+          {/* Contact Section (Desktop) */}
+          <Link
+            href="tel:+9962471680"
+            className="hidden md:flex items-center gap-3 hover:opacity-80"
+          >
+            <div className="text-sm leading-tight">
+              <span className="block text-gray-500">Need help?</span>
+              <span className="font-semibold text-black">+996 247-1680</span>
+            </div>
+            <div className="bg-(--primary) w-10 h-10 rounded-full flex justify-center items-center">
+              <FaPhoneAlt className="text-white" />
+            </div>
+          </Link>
+
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden text-2xl text-gray-700"
+          >
+            {isOpen ? <FaTimes /> : <FaBars />}
+          </button>
+
+          {user && (
+            <button
+              title="logout"
+              type="button"
+              className="text-sm leading-tight cursor-pointer btnPrimary"
+              onClick={handleLogout}
+            >
+              <i className="fa-solid fa-right-from-bracket"></i>
+            </button>
+          )}
+        </div>
       </div>
 
-      <button
-        type="button"
-        className="text-sm leading-tight cursor-pointer btnPrimary"
-        onClick={handleLogout}
-      >
-        Logout
-      </button>
       {/* Mobile Dropdown */}
       <div
         className={`md:hidden overflow-hidden transition-[max-height] duration-300 bg-white shadow-md border-t ${
@@ -93,21 +101,19 @@ export default function Navbar() {
           ))}
 
           {/* Contact (Mobile) */}
-          <div className="flex items-center gap-3">
-            <Link
-              href="tel:+9962471680"
-              className="flex items-center gap-3 hover:opacity-80"
-              onClick={() => setIsOpen(false)}
-            >
-              <div className="bg-(--primary) w-10 h-10 rounded-full flex justify-center items-center">
-                <FaPhoneAlt className="text-white" />
-              </div>
-              <div className="text-sm leading-tight">
-                <span className="block text-gray-500">Need help?</span>
-                <span className="font-semibold text-black">+996 247-1680</span>
-              </div>
-            </Link>
-          </div>
+          <Link
+            href="tel:+9962471680"
+            className="flex items-center gap-3 hover:opacity-80"
+            onClick={() => setIsOpen(false)}
+          >
+            <div className="bg-(--primary) w-10 h-10 rounded-full flex justify-center items-center">
+              <FaPhoneAlt className="text-white" />
+            </div>
+            <div className="text-sm leading-tight">
+              <span className="block text-gray-500">Need help?</span>
+              <span className="font-semibold text-black">+996 247-1680</span>
+            </div>
+          </Link>
         </nav>
       </div>
     </header>
