@@ -26,8 +26,7 @@ type FunctionCardProps = {
 };
 
 function FunctionCard({ data }: FunctionCardProps) {
-  console.log(data.id, ">>>> data");
-
+ 
   return (
     <article className="bg-(--gray) rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col overflow-hidden">
       <div className="w-fit h-fit text-sm font-semibold text-(--primary) bg-(--primary)/10 px-2 py-1 rounded-full absolute top-2 right-2">

@@ -1,0 +1,79 @@
+"use client";
+
+import Image from "next/image";
+import React, { useState } from "react";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "@/app/firebase";
+import { useRouter } from "next/navigation";
+
+function page() {
+  const [userName, setUserName] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const router = useRouter();
+
+  const handleLogin = async () => {
+    try {
+      const user = await signInWithEmailAndPassword(auth, userName, password);
+      alert(user.user.email + "Welcome");
+      router.push("/");
+    } catch (error) {
+      console.log("not able to login", error);
+    }
+  };
+
+  return (
+    <>
+      <div className="container mx-auto py-12">
+        <div className="p-4 bg-white  grid lg:grid-cols-2 gap-6 items-center">
+          <div className="rounded-2xl p-12 shadow-md h-[280px] lg:h-full bg-(--primary) relative">
+            <Image
+              src="/static/img/cartyrepattern.svg"
+              alt="login"
+              fill
+              className="object-cover"
+            />
+
+            <div className="max-w-[686px]">
+              <h1 className="text-white font-bold leading-[1] text-[60px] mb-6">
+                Experience the road like never before
+              </h1>
+              <p className="text-white mb-8 lg:max-w-[464px] w-full">
+                Aliquam adipiscing velit semper morbi. Purus non eu cursus
+                porttitor tristique et gravida. Quis nunc interdum gravida
+                ullamcorper
+              </p>
+            </div>
+          </div>
+          <div className="p-6 max-w-[620px] w-full mx-auto">
+            <div className="form-container mb-8">
+              <label>Username</label>
+              <input
+                type="text"
+                placeholder="Enter your username"
+                onChange={(e) => setUserName(e.target.value)}
+              />
+            </div>
+
+            <div className="form-container mb-8 ">
+              <label>Password</label>
+              <input
+                type="text"
+                placeholder="Enter your password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+
+            <button
+              onClick={handleLogin}
+              className="btnPrimary w-full max-w-[320px] mt-10 mx-auto block"
+            >
+              Login
+            </button>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+
+export default page;
