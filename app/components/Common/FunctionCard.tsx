@@ -28,12 +28,12 @@ type FunctionCardProps = {
 function FunctionCard({ data }: FunctionCardProps) {
  
   return (
-    <article className="bg-(--gray) rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col overflow-hidden">
+    <article className="relative bg-(--gray) rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col overflow-hidden">
       <div className="w-fit h-fit text-sm font-semibold text-(--primary) bg-(--primary)/10 px-2 py-1 rounded-full absolute top-2 right-2">
         New
       </div>
       {/* Car Image */}
-      <div className="max-w-[500px]">
+      <div className="max-w-[500px] w-full">
         <Swiper
           autoplay={{ delay: 8000, disableOnInteraction: false }}
           spaceBetween={10}
@@ -47,7 +47,7 @@ function FunctionCard({ data }: FunctionCardProps) {
           {data?.gallaryArray?.map((src, index) => {
             return (
               <SwiperSlide key={`${index}-${src}`}>
-                <div className="relative w-full h-[320px]">
+                <div className="relative w-full h-[220px] sm:h-[280px] md:h-[320px]">
                   <Image
                     fill
                     src={src}

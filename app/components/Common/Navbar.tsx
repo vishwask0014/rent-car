@@ -25,9 +25,11 @@ export default function Navbar() {
       });
   };
 
+  const actveMenu = user ? isLoginMenuLink : menuLink;
+
   return (
     <header className="sticky top-0 left-0 w-full bg-white shadow-sm z-50">
-      <div className="w-full flex justify-between items-center py-4 container mx-auto px-4">
+      <div className="w-full flex justify-between items-center py-4 container mx-auto px-4 sm:px-6">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
           <IconContainer name="logo" />
@@ -35,7 +37,7 @@ export default function Navbar() {
 
         {/* Desktop Menu */}
         <nav className="hidden md:flex gap-8 items-center">
-          {menuLink.map((i, index) => (
+          {actveMenu.map((i, index) => (
             <Link
               key={index}
               href={i.slug}
@@ -65,6 +67,9 @@ export default function Navbar() {
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="md:hidden text-2xl text-gray-700"
+            aria-controls="mobile-menu"
+            aria-expanded={isOpen}
+            title={isOpen ? "Close menu" : "Open menu"}
           >
             {isOpen ? <FaTimes /> : <FaBars />}
           </button>
@@ -82,14 +87,26 @@ export default function Navbar() {
         </div>
       </div>
 
+      {/* Backdrop (Mobile) */}
+      {isOpen && (
+        <div
+          className="md:hidden fixed inset-0"
+          onClick={() => setIsOpen(false)}
+          aria-hidden
+        />
+      )}
+
       {/* Mobile Dropdown */}
       <div
-        className={`md:hidden overflow-hidden transition-[max-height] duration-300 bg-white shadow-md border-t ${
-          isOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+        id="mobile-menu"
+        className={`md:hidden fixed top-16 left-4 right-4 z-50 transition-all duration-200 ${
+          isOpen
+            ? "opacity-100 translate-y-0 pointer-events-auto"
+            : "opacity-0 -translate-y-2 pointer-events-none"
         }`}
       >
-        <nav className="flex flex-col items-start px-5 gap-6 py-6">
-          {menuLink.map((i, index) => (
+        <nav className="flex flex-col items-start px-5 gap-6 py-6 rounded-xl border bg-white shadow-lg">
+          {actveMenu.map((i, index) => (
             <Link
               key={index}
               href={i.slug}
@@ -114,6 +131,29 @@ export default function Navbar() {
               <span className="font-semibold text-black">+996 247-1680</span>
             </div>
           </Link>
+
+          {/* Auth Action (Mobile) */}
+          {user ? (
+            <button
+              onClick={() => {
+                setIsOpen(false);
+                handleLogout();
+              }}
+              className="btnPrimary w-full"
+              title="Logout"
+            >
+              Logout
+            </button>
+          ) : (
+            <Link
+              href="/login"
+              className="btnPrimary w-full text-center"
+              onClick={() => setIsOpen(false)}
+              title="Login"
+            >
+              Login
+            </Link>
+          )}
         </nav>
       </div>
     </header>
@@ -123,11 +163,11 @@ export default function Navbar() {
 const menuLink = [
   { label: "Home", slug: "/" },
   { label: "Vehicles", slug: "/vehicles" },
-  { label: "About Us", slug: "/about" },
-  { label: "Contact Us", slug: "/contact" },
+  { label: "Login", slug: "/login" },
+];
+
+const isLoginMenuLink = [
+  { label: "Home", slug: "/" },
+  { label: "Vehicles", slug: "/vehicles" },
   { label: "Posting", slug: "/posting" },
-  {
-    label: "Login",
-    slug: "/login",
-  },
 ];

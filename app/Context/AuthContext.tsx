@@ -17,6 +17,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [loading, setLoading] = useState(true);
   const route = useRouter();
 
+  console.log(user, "user context api");
+
   useEffect(() => {
     const UnSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);

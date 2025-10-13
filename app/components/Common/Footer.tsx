@@ -20,7 +20,7 @@ export default function Footer() {
       </div>
 
       {/* Copyright text */}
-      <div className="text-center py-8">
+      <div className="text-center py-6 text-sm text-gray-600 px-4">
         © Copyright Car Rental 2024. Design by Figma.guru
       </div>
     </footer>
@@ -30,9 +30,9 @@ export default function Footer() {
 const UpperBar = () => {
   return (
     <>
-      <div className="flex flex-wrap justify-between py-10 lg:py-20">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 py-10 lg:py-16">
         {/* Logo + About */}
-        <div className="md:col-span-1">
+        <div className="flex items-center">
           <IconContainer name="logo" />
         </div>
 
@@ -88,9 +88,9 @@ const UpperBar = () => {
 const BottomBar = () => {
   return (
     <>
-      <div className="flex flex-wrap justify-between">
-        <div className="">
-          <p className="text-gray-700 text-lg mb-8 leading-relaxed max-w-[280px]">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div>
+          <p className="text-gray-700 text-base sm:text-lg mb-6 leading-relaxed max-w-[360px]">
             Faucibus faucibus pellentesque dictum turpis. Id pellentesque turpis
             massa a id iaculis lorem t...
           </p>
@@ -98,23 +98,23 @@ const BottomBar = () => {
         </div>
 
         <div>
-          <h4 className="font-semibold mb-4">Download App</h4>
-          <ul>
+          <h4 className="font-semibold mb-3">Useful Links</h4>
+          <ul className="space-y-2">
             {usefulLinks.map((link, index) => (
               <li key={index}>
-                <Link href={link.href}>{link.label}</Link>
+                <Link className="hover:text-(--primary) transition" href={link.href}>{link.label}</Link>
               </li>
             ))}
           </ul>
         </div>
 
         <div>
-          <h4 className="font-semibold mb-4">Download App</h4>
+          <h4 className="font-semibold mb-3">Vehicle Types</h4>
 
-          <ul>
+          <ul className="space-y-2">
             {vehicleLinks.map((link, index) => (
               <li key={index}>
-                <Link href={link.href}>{link.label}</Link>
+                <Link className="hover:text-(--primary) transition" href={link.href}>{link.label}</Link>
               </li>
             ))}
           </ul>
@@ -124,20 +124,20 @@ const BottomBar = () => {
           {/* Download App */}
           <div className="space-y-3">
             <h4 className="font-semibold">Download App</h4>
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col sm:flex-row lg:flex-col gap-3">
               <Image
                 src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Available_on_the_App_Store_%28black%29_SVG.svg"
                 alt="App Store"
                 width={150}
                 height={45}
-                className="cursor-pointer"
+                className="cursor-pointer w-[150px] h-auto"
               />
               <Image
                 src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
                 alt="Google Play"
                 width={150}
                 height={45}
-                className="cursor-pointer"
+                className="cursor-pointer w-[150px] h-auto"
               />
             </div>
           </div>

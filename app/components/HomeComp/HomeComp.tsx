@@ -24,27 +24,27 @@ export function HeroSection() {
   } | null>(null);
 
   return (
-    <div className="relative container mx-auto">
+    <div className="relative container mx-auto px-4 sm:px-6">
       <div
-        className="p-8 bg-(--primary) rounded-2xl mt-6 lg:mt-8 flex flex-col gap-8 items-center justify-between lg:flex-row"
+        className="p-6 sm:px-8 py-14 bg-(--primary) rounded-2xl mt-6 lg:mt-8 flex flex-col gap-6 sm:gap-8 items-center justify-between lg:flex-row"
         style={{ backgroundImage: "url('/static/img/cartyrepattern.svg')" }}
       >
         {/* Left Side */}
-        <div className="max-w-[686px]">
-          <h1 className="text-white font-bold leading-[1] text-[60px] mb-6">
+        <div className="max-w-[600px] w-full">
+          <h1 className="text-white font-bold leading-tight text-4xl sm:text-5xl lg:text-[60px] mb-4 sm:mb-6">
             Experience the road like never before
           </h1>
-          <p className="text-white mb-8 lg:max-w-[464px] w-full">
+          <p className="text-white/80 mb-6 sm:mb-8 lg:max-w-[464px] w-full text-base sm:text-lg">
             Aliquam adipiscing velit semper morbi. Purus non eu cursus porttitor
             tristique et gravida. Quis nunc interdum gravida ullamcorper
           </p>
-          <button className="w-fit bg-(--secondary) text-white text-base py-2 px-6 rounded-xl font-semibold">
+          {/* <button className="w-full xs:w-fit bg-(--secondary) text-white text-base py-2.5 px-6 rounded-xl font-semibold">
             View all cars
-          </button>
+          </button> */}
         </div>
 
         {/* Booking Card */}
-        <div className="bg-white max-w-[416px] w-full rounded-2xl p-6 shadow-lg">
+        <div className="bg-white max-w-[416px] w-full rounded-2xl p-5 sm:p-6 shadow-lg">
           <h2 className="font-semibold text-black text-center text-2xl mb-6">
             Book your car
           </h2>
@@ -86,16 +86,16 @@ export function HeroSection() {
             <input
               placeholder="Rental Date"
               type="date"
-              className="py-2 rounded-xl bg-(--gray) px-4 min-h-[38px] text-sm"
+              className="py-2.5 rounded-xl bg-(--gray) px-4 min-h-[44px] text-sm"
             />
 
             <input
               placeholder="Return Date"
               type="date"
-              className="py-2 rounded-xl bg-(--gray) px-4 min-h-[38px] text-sm"
+              className="py-2.5 rounded-xl bg-(--gray) px-4 min-h-[44px] text-sm"
             />
 
-            <button className="bg-(--secondary) text-white font-semibold text-base rounded-xl py-3 mt-6">
+            <button className="bg-(--secondary) text-white font-semibold text-base rounded-xl py-3 mt-6 w-full">
               Book Now
             </button>
           </div>
@@ -149,40 +149,42 @@ export function DetailCard() {
 
   return (
     <>
-      <div className="container mx-auto relative py-10 lg:py-20">
-        <div className="flex justify-between mb-8 lg:mb-10">
-          <h2 className="text-center lg:text-left text-3xl font-bold">
-            Choose the car that <br className="hidden lg:block" />
-            suits you
-          </h2>
-          <Link
-            href="/all-cars"
-            className="flex items-center gap-2 font-black text-base"
-          >
-            View All <IconContainer name="chevronRight" />
-          </Link>
-        </div>
+      <div className="relative container mx-auto px-4 sm:px-6">
+        <div className="relative py-10 lg:py-20">
+          <div className="flex justify-between mb-8 lg:mb-10">
+            <h2 className="text-center lg:text-left text-3xl font-bold">
+              Choose the car that <br className="hidden lg:block" />
+              suits you
+            </h2>
+            <Link
+              href="/all-cars"
+              className="flex items-center gap-2 font-black text-base"
+            >
+              View All <IconContainer name="chevronRight" />
+            </Link>
+          </div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {data.map((car) => (
-            <FunctionCard
-              data={{
-                id: String(car.id),
-                carName: car.carName || "-",
-                brand: car.brand || "-",
-                manufacturingYear: car.manufacturingYear || "-",
-                kmDriven: car.kmDriven || "-",
-                fuelType: car.fuelType || "-",
-                transmission: car.transmission || "-",
-                segament: car.segament || "-",
-                hourlyPrice: String(car.hourlyPrice ?? "-"),
-                numberOfGear: car.numberOfGear || "-",
-                gallaryArray: car.gallaryArray || [],
-                description: car.description || "-",
-              }}
-              key={car.id}
-            />
-          ))}
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {data.map((car) => (
+              <FunctionCard
+                data={{
+                  id: String(car.id),
+                  carName: car.carName || "-",
+                  brand: car.brand || "-",
+                  manufacturingYear: car.manufacturingYear || "-",
+                  kmDriven: car.kmDriven || "-",
+                  fuelType: car.fuelType || "-",
+                  transmission: car.transmission || "-",
+                  segament: car.segament || "-",
+                  hourlyPrice: String(car.hourlyPrice ?? "-"),
+                  numberOfGear: car.numberOfGear || "-",
+                  gallaryArray: car.gallaryArray || [],
+                  description: car.description || "-",
+                }}
+                key={car.id}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </>

@@ -5,7 +5,6 @@ export default function Home() {
     <>
       <HeroSection />
       <DetailCard />
-      {/* <GetCars /> */}
-    </>
+      </>
   );
 }
