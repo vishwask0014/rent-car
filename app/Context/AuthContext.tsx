@@ -6,7 +6,8 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
-import { useRouter } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
+import LoadingScreen from "../components/Common/LoadingScreen";
 
 const AuthContext = createContext({});
 
@@ -16,6 +17,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [password, setPassword] = useState<string>("");
   const [loading, setLoading] = useState(true);
   const route = useRouter();
+  const currentRoute = usePathname();
 
   console.log(user, "user context api");
 
@@ -37,6 +39,14 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       route.push("/login");
     });
   };
+
+  // route protection
+  // useEffect(() => {
+  //   if (currentRoute !== "/") return route.push("/login");
+  //   if (!user) return route.push("/login");
+  // }, [!user]);
+
+  if (loading) return <LoadingScreen />;
 
   return (
     <>
