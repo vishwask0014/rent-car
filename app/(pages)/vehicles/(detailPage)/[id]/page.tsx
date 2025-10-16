@@ -71,30 +71,22 @@ function Page() {
 
   return (
     <>
-      <div className="container mx-auto py-8 lg:py-12">
-        {/* Header / Hero-like card */}
+      <div className="container mx-auto px-4 sm:px-6 py-8 lg:py-12">
         <div
-          className="p-6 lg:p-8 bg-(--primary) rounded-2xl flex flex-col-reverse gap-6 lg:flex-row lg:items-center lg:justify-between"
+          className="p-6 sm:p-8 bg-(--primary) rounded-2xl flex flex-col-reverse gap-6 lg:flex-row lg:items-center lg:justify-between"
           style={{ backgroundImage: "url('/static/img/cartyrepattern.svg')" }}
         >
           <div className="text-white max-w-2xl">
-            <h1 className="font-bold leading-[1] text-[40px] lg:text-[56px] mb-4">
+            <h1 className="font-bold leading-[1] text-4xl sm:text-5xl lg:text-[56px] mb-4">
               {detailofCar?.carName}
             </h1>
-            <p className="opacity-90 mb-6">{detailofCar?.description}</p>
+            <p className="opacity-90 text-base sm:text-lg lg:text-xl mb-6">{detailofCar?.description}</p>
             <div className="flex flex-wrap items-center gap-3">
-              <span className="bg-white/15 px-4 py-2 rounded-xl text-sm">
-                {detailofCar?.brand}
-              </span>
-              <span className="bg-white/15 px-4 py-2 rounded-xl text-sm">
-                {detailofCar?.transmission}
-              </span>
-              <span className="bg-white/15 px-4 py-2 rounded-xl text-sm">
-                {detailofCar?.fuelType}
-              </span>
+              <span className="bg-white/15 px-4 py-2 rounded-xl text-sm">{detailofCar?.brand}</span>
+              <span className="bg-white/15 px-4 py-2 rounded-xl text-sm">{detailofCar?.transmission}</span>
+              <span className="bg-white/15 px-4 py-2 rounded-xl text-sm">{detailofCar?.fuelType}</span>
             </div>
           </div>
-
           <div className="w-full max-w-[420px] mx-auto">
             <div className="bg-white/10 backdrop-blur rounded-2xl p-4 flex items-center justify-center">
               {/* <Image
@@ -108,6 +100,8 @@ function Page() {
             </div>
           </div>
         </div>
+
+        
 
         {/* Content */}
         <div className="grid gap-6 lg:grid-cols-3 mt-8">

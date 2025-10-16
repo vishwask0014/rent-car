@@ -18,15 +18,14 @@ function page() {
       alert(user.user.email + "Welcome");
       router.push("/");
     } catch (error) {
-      console.log("not able to login", error);
     }
   };
 
   return (
     <>
-      <div className="container mx-auto py-12">
+      <div className="container mx-auto px-4 py-12 md:px-12 lg:px-16">
         <div className="p-4 bg-white  grid lg:grid-cols-2 gap-6 items-center">
-          <div className="rounded-2xl p-12 shadow-md h-[280px] lg:h-full bg-(--primary) relative">
+          <div className="rounded-2xl p-12 shadow-md lg:min-h-[280px] lg:h-full bg-(--primary) relative">
             <Image
               src="/static/img/cartyrepattern.svg"
               alt="login"
@@ -35,10 +34,10 @@ function page() {
             />
 
             <div className="max-w-[686px]">
-              <h1 className="text-white font-bold leading-[1] text-[60px] mb-6">
+              <h1 className="text-white font-bold leading-[1] text-4xl sm:text-5xl lg:text-[60px] mb-6">
                 Experience the road like never before
               </h1>
-              <p className="text-white mb-8 lg:max-w-[464px] w-full">
+              <p className="text-white text-base sm:text-lg mb-8 lg:max-w-[464px] w-full">
                 Aliquam adipiscing velit semper morbi. Purus non eu cursus
                 porttitor tristique et gravida. Quis nunc interdum gravida
                 ullamcorper

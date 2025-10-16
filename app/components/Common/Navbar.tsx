@@ -31,7 +31,7 @@ export default function Navbar() {
     <header className="sticky top-0 left-0 w-full bg-white shadow-sm z-50">
       <div className="w-full flex justify-between items-center py-4 container mx-auto px-4 sm:px-6">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="/" className="w-[140px] lg:w-auto flex items-center gap-2">
           <IconContainer name="logo" />
         </Link>
 

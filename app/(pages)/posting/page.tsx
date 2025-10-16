@@ -85,11 +85,18 @@ export default function Page() {
     navigator.clipboard.writeText(uniqueKey);
     toast("Copied To Clipboard");
   };
+
+  // "_" is used to ignore syntax "element" in the array where (element, i) => i !== index
+  const removeImage = (index: number) => {
+    const removedImgGallary = gallaryArray.filter((_, i) => i !== index);
+    console.log(removedImgGallary);
+    setGallaryArray(removedImgGallary);
+  };
   return (
     <>
       <ToastContainer />
-      <div className="container mx-auto px-4 bg-white">
-        <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-x-8 gap-y-8 py-12">
+      <div className="container mx-auto px-4 sm:px-6 bg-white">
+        <div className="grid gap-8 py-12 md:grid-cols-2 xl:grid-cols-3">
           <div className="form-container">
             <label>Unique Key</label>
             <div className="relative w-full">
@@ -217,7 +224,7 @@ export default function Page() {
             />
           </div>
 
-          <div className="form-container col-span-3">
+          <div className="form-container md:col-span-2">
             <label>Description</label>
             <textarea
               placeholder="Describe the car, features, condition, pickup details, etc."
@@ -228,11 +235,10 @@ export default function Page() {
             />
           </div>
 
-          <div className="w-full  form-container col-span-3">
-            <div className="flex gap-4">
-              <div>
-                {/* <label className="mb-2">Upload Images</label> */}
-                <div className="border flex justify-center items-center border-(--primary)/80 bg-(--primary)/10 px-6 py-4 rounded-2xl w-[220px] h-[220px] relative overflow-hidden">
+          <div className="w-full  form-container md:col-span-2 xl:col-span-3">
+            <div className="">
+              <div className="flex gap-2 flex-wrap md:col-span-2 xl:col-span-3">
+                <div className="border flex justify-center items-center border-(--primary)/80 bg-(--primary)/10 px-6 py-4 rounded-2xl w-[160px] h-[160px] sm:w-[220px] sm:h-[220px] relative overflow-hidden">
                   <div className="text-xl text-center font-medium text-(--primary)">
                     <i className="fa-solid fa-upload"></i> <br />
                     Upload Images
@@ -245,33 +251,38 @@ export default function Page() {
                     onChange={handleFileChange}
                   />
                 </div>
-              </div>
-              <div>
+
+                {/* gallary uploaded realtime */}
                 {gallaryArray.length >= 1 && (
-                  <div className="col-span-3 ">
-                    <div className="flex flex-wrap gap-4">
-                      {gallaryArray.map((i: string, index: number) => (
-                        <div
-                          className="relative w-[220px] h-[220px]"
-                          key={index}
+                  <>
+                    {gallaryArray.map((i: string, index: number) => (
+                      <div
+                        className="relative w-[160px] h-[160px] sm:w-[220px] sm:h-[220px]"
+                        key={index}
+                      >
+                        <button
+                          type="button"
+                          onClick={() => removeImage(index)}
+                          className="rounded-full w-6 h-6 bg-red-800 text-white z-10 absolute -top-2 -right-2 text-sm flex justify-center items-center cursor-pointer"
                         >
-                          <Image
-                            alt="img"
-                            fill
-                            className="object-cover rounded-md border-2 border-slate-300"
-                            src={i}
-                          />
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+                          <i className="fa-solid fa-xmark"></i>
+                        </button>
+                        <Image
+                          alt="img"
+                          fill
+                          className="object-cover rounded-md border-2 border-slate-300"
+                          src={i}
+                        />
+                      </div>
+                    ))}
+                  </>
                 )}
               </div>
             </div>
           </div>
         </div>
 
-        <div className="flex justify-center">
+        <div className="flex justify-center px-4 sm:px-0">
           <button
             onClick={() =>
               handleSubmit(
@@ -290,7 +301,7 @@ export default function Page() {
                 gallaryArray
               )
             }
-            className="btnPrimary w-1/2 text-center"
+            className="btnPrimary w-full sm:w-fit sm:!px-10 text-center"
             type="submit"
           >
             Submit
