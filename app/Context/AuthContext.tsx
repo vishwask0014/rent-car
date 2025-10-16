@@ -1,6 +1,6 @@
 "use client";
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { auth } from "../firebase";
+import { auth, db } from "../firebase";
 import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
@@ -8,18 +8,35 @@ import {
 } from "firebase/auth";
 import { useParams, usePathname, useRouter } from "next/navigation";
 import LoadingScreen from "../components/Common/LoadingScreen";
+import { get, ref } from "firebase/database";
 
 const AuthContext = createContext({});
+
+type CarDetail = {
+  id: string | number;
+  carName?: string;
+  title?: string;
+  brand?: string;
+  manufacturingYear?: string;
+  kmDriven?: string;
+  fuelType?: string;
+  transmission?: string;
+  segament?: string;
+  hourlyPrice?: string | number;
+  numberOfGear?: string;
+  gallaryArray?: string[];
+  description?: string;
+};
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = React.useState<any>(null);
   const [email, setemail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [loading, setLoading] = useState(true);
+  const [data, setData] = useState<CarDetail[]>([]);
   const route = useRouter();
   const currentRoute = usePathname();
-
-  console.log(user, "user context api");
+  const dbRef = ref(db, "carDetails/");
 
   useEffect(() => {
     const UnSubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -46,12 +63,32 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   //   if (!user) return route.push("/login");
   // }, [!user]);
 
-  if (loading) return <LoadingScreen />;
+  useEffect(() => {
+    async function getData() {
+      const snapShot = await get(dbRef);
+      const listing = snapShot.val();
 
+      if (!listing || typeof listing !== "object") {
+        console.log("no listing present");
+        setData([]);
+      } else {
+        const normalized: CarDetail[] = Object.entries(
+          listing as Record<string, unknown>
+        ).map(([key, value]) => ({
+          id: key,
+          ...(value as Partial<CarDetail>),
+        }));
+        setData(normalized);
+      }
+    }
+    getData();
+  }, [dbRef]);
+
+  if (loading) return <LoadingScreen />;
   return (
     <>
       <AuthContext.Provider
-        value={{ user, loading, email, password, login, logout }}
+        value={{ user, loading, email, password, login, logout, data }}
       >
         {children}
       </AuthContext.Provider>

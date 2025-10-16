@@ -26,7 +26,6 @@ type FunctionCardProps = {
 };
 
 function FunctionCard({ data }: FunctionCardProps) {
- 
   return (
     <article className="relative bg-(--gray) rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col overflow-hidden">
       <div className="w-fit h-fit text-sm font-semibold text-(--primary) bg-(--primary)/10 px-2 py-1 rounded-full absolute top-2 right-2">
@@ -115,7 +114,7 @@ function FunctionCard({ data }: FunctionCardProps) {
 
         {/* Button */}
         <Link
-          href={`/${data.id}`}
+          href={`/vehicles/${data.id}`}
           className="btnPrimary w-full text-center block mt-auto"
         >
           View Details
