@@ -81,7 +81,7 @@ export default function Page() {
 
         {!loading && data && data.length > 0 && (
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {data.map((car) => (
+            {data.map((car : any) => (
               <FunctionCard
                 data={{
                   id: String(car.id),

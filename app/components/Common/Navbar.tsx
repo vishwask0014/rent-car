@@ -12,7 +12,7 @@ import { useAuthContext } from "@/app/Context/AuthContext";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
-  const { user } = useAuthContext();
+  const { user } = useAuthContext() as any;
 
   const handleLogout = async () => {
     signOut(auth)
