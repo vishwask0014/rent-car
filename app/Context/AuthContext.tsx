@@ -6,7 +6,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import LoadingScreen from "../components/Common/LoadingScreen";
 import { get, ref } from "firebase/database";
 

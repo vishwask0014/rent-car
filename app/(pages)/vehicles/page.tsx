@@ -4,12 +4,9 @@ import { useAuthContext } from "@/app/Context/AuthContext";
 import Link from "next/link";
 import React from "react";
 
-export default function page() {
+export default function Page() {
   const { data, loading } = useAuthContext() as any;
   const total = Array.isArray(data) ? data.length : 0;
-  const brands = Array.isArray(data)
-    ? Array.from(new Set(data.map((c: any) => c?.brand).filter(Boolean)))
-    : [];
 
   return (
     <>
@@ -29,10 +26,13 @@ export default function page() {
             <span className="px-3 py-1 rounded-full bg-white/15 text-sm">
               Total: {total}
             </span>
-            {data?.map((i: string) => {
+            {data?.map((i: any) => {
               return (
-                <span className="px-3 py-1 rounded-full bg-white/15 text-sm">
-                  {i.segament}
+                <span
+                  key={i.id}
+                  className="px-3 py-1 rounded-full bg-white/15 text-sm"
+                >
+                  {i?.segament}
                 </span>
               );
             })}
