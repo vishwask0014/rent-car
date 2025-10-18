@@ -6,7 +6,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
-import { useParams, usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import LoadingScreen from "../components/Common/LoadingScreen";
 import { get, ref } from "firebase/database";
 
@@ -35,7 +35,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState<CarDetail[]>([]);
   const route = useRouter();
-  const currentRoute = usePathname();
+  // const currentRoute = usePathname();
   const dbRef = ref(db, "carDetails/");
 
   useEffect(() => {

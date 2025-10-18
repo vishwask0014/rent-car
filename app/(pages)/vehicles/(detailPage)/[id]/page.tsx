@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { db } from "@/app/firebase";
 import { get, ref } from "firebase/database";
 import { useParams } from "next/navigation";
-import Image from "next/image";
 
 type Car = {
   userId: string;
@@ -22,11 +21,13 @@ type Car = {
 };
 
 function Page() {
-  const [data, setData] = useState<Car[]>([]);
+  // const [data, setData] = useState<Car[]>([]);
   const [detailofCar, setDetailofCar] = useState<Car | null>(null);
   const [loading, setLoading] = useState(true);
   const dbRef = ref(db, "carDetails");
   const pathId = useParams();
+
+
 
   useEffect(() => {
     (async () => {
@@ -39,7 +40,7 @@ function Page() {
           : retriveData
           ? Object.values(retriveData as Car[])
           : [];
-        setData(carsArray);
+        // setData(carsArray);
 
         // Extract route id
         const routeId = (pathId as any)?.id;
