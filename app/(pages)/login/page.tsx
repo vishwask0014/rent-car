@@ -16,8 +16,7 @@ function Page() {
       const user = await signInWithEmailAndPassword(auth, userName, password);
       alert(user.user.email + "Welcome");
       router.push("/");
-    } catch (error) {
-    }
+    } catch (error) {}
   };
 
   return (
@@ -33,13 +32,14 @@ function Page() {
             />
 
             <div className="max-w-[686px]">
-              <h1 className="text-white font-bold leading-[1] text-4xl sm:text-5xl lg:text-[60px] mb-6">
+              <h1 className="text-white font-bold leading-[1] text-4xl sm:text-5xl lg:text-[42px] lg:leading-[1.1] mb-6">
                 Experience the road like never before
               </h1>
               <p className="text-white text-base sm:text-lg mb-8 lg:max-w-[464px] w-full">
-                Aliquam adipiscing velit semper morbi. Purus non eu cursus
-                porttitor tristique et gravida. Quis nunc interdum gravida
-                ullamcorper
+                Sign in to unlock member-only deals: up to 30% off weekend
+                rentals, free upgrades on select models, flexible pick-up, and
+                zero-fee cancellations. Choose from economy to SUVs—fully
+                inspected and ready to go.
               </p>
             </div>
           </div>

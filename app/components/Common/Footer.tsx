@@ -60,7 +60,7 @@ const UpperBar = () => {
             <div>
               <h4 className="text-sm">Email</h4>
               <p className="font-semibold  text-sm text-gray-800">
-                nwiger@yahoo.com
+                rentalcar@gmail.com
               </p>
             </div>
           </div>
@@ -91,8 +91,9 @@ const BottomBar = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         <div>
           <p className="text-gray-700 text-base sm:text-lg mb-6 leading-relaxed max-w-[360px]">
-            Faucibus faucibus pellentesque dictum turpis. Id pellentesque turpis
-            massa a id iaculis lorem t...
+            Best deals daily: save up to 30% on weekends, economy from ₹999/day,
+            free cancellations, and 24/7 support. Clean, inspected cars ready
+            when you are.
           </p>
           <SocailLinks />
         </div>

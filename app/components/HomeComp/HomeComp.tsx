@@ -35,8 +35,9 @@ export function HeroSection() {
             Experience the road like never before
           </h1>
           <p className="text-white/80 mb-6 sm:mb-8 lg:max-w-[464px] w-full text-base sm:text-lg">
-            Aliquam adipiscing velit semper morbi. Purus non eu cursus porttitor
-            tristique et gravida. Quis nunc interdum gravida ullamcorper
+            Drive your way and save: weekend specials up to 30% off, daily rates
+            from ₹999, free cancellations, and instant pick‑up. Sedans, SUVs, and
+            more—cleaned, inspected, and ready.
           </p>
           {/* <button className="w-full xs:w-fit bg-(--secondary) text-white text-base py-2.5 px-6 rounded-xl font-semibold">
             View all cars
@@ -44,7 +45,7 @@ export function HeroSection() {
         </div>
 
         {/* Booking Card */}
-        <div className="bg-white max-w-[416px] w-full rounded-2xl p-5 sm:p-6 shadow-lg">
+        {/* <div className="bg-white max-w-[416px] w-full rounded-2xl p-5 sm:p-6 shadow-lg">
           <h2 className="font-semibold text-black text-center text-2xl mb-6">
             Book your car
           </h2>
@@ -99,7 +100,7 @@ export function HeroSection() {
               Book Now
             </button>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

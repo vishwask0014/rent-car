@@ -3,6 +3,9 @@ import React, { useEffect, useState } from "react";
 import { db } from "@/app/firebase";
 import { get, ref } from "firebase/database";
 import { useParams } from "next/navigation";
+import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
 
 type Car = {
   userId: string;
@@ -89,15 +92,44 @@ function Page() {
             </div>
           </div>
           <div className="w-full max-w-[420px] mx-auto">
-            <div className="bg-white/10 backdrop-blur rounded-2xl p-4 flex items-center justify-center">
-              {/* <Image
-                src={detailofCar.image}
-                alt={`${detailofCar.name}-img`}
-                width={420}
-                height={240}
-                className="w-full h-auto object-contain"
-                priority
-              /> */}
+            <div className="bg-white/10 backdrop-blur rounded-2xl p-4">
+              {(() => {
+                const raw = detailofCar?.gallaryArray || [];
+                const images = raw
+                  .filter(Boolean)
+                  .map((src) =>
+                    typeof src === "string" && src.startsWith("data:")
+                      ? src
+                      : `data:image/jpeg;base64,${src}`
+                  );
+
+                if (!images.length) return null;
+
+                return (
+                  <Swiper
+                    modules={[Navigation, Pagination]}
+                    slidesPerView={1}
+                    navigation
+                    pagination={{ clickable: true }}
+                    style={{ width: "100%", height: "100%" }}
+                  
+                  >
+                    {images.map((src, idx) => (
+                      <SwiperSlide key={`${detailofCar?.id}-img-${idx}`}>
+                        <div className="flex items-center justify-center">
+                          {/* Using a regular img tag to avoid domain/config issues with data URLs */}
+                          <img
+                            src={src}
+                            alt={`${detailofCar?.carName || "car"}-image-${idx + 1}`}
+                            className="w-full h-auto object-contain max-h-[260px]"
+                            loading={idx === 0 ? "eager" : "lazy"}
+                          />
+                        </div>
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
+                );
+              })()}
             </div>
           </div>
         </div>
