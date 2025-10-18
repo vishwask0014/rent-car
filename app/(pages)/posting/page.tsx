@@ -24,11 +24,29 @@ export default function Page() {
 
   const uniqueKey = uuidv4();
 
+  // Convert a File to a data URL (base64) for preview and upload
+  const fileToDataUrl = (file: File) =>
+    new Promise<string>((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result as string);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+
   // array to collect images upload by user
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      setGallaryArray((prev) => [...prev, URL.createObjectURL(file)]);
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from(e.target.files ?? []);
+    if (!files.length) return;
+
+    try {
+      const dataUrls = await Promise.all(files.map((f) => fileToDataUrl(f)));
+      setGallaryArray((prev) => [...prev, ...dataUrls]);
+    } catch (error) {
+      console.error("Failed to convert file(s) to base64", error);
+      toast.error("Failed to read image(s). Please try again.");
+    } finally {
+      // reset the input so selecting the same file again triggers onChange
+      e.currentTarget.value = "";
     }
   };
 
@@ -205,6 +223,7 @@ export default function Page() {
               <option value="SUV">SUV</option>
               <option value="Micro SUV">Micro SUV</option>
               <option value="Sedan">Sedan</option>
+              <option value="Crossover">Crossover</option>
               <option value="Hatchback">Hatchback</option>
               <option value="Micro Hatchback">Micro Hatchback</option>
               <option value="Sports">Sports</option>

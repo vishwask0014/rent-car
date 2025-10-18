@@ -156,12 +156,15 @@ export function DetailCard() {
               Choose the car that <br className="hidden lg:block" />
               suits you
             </h2>
-            <Link
-              href="/all-cars"
-              className="flex items-center gap-2 font-black text-base"
-            >
-              View All <IconContainer name="chevronRight" />
-            </Link>
+
+            {data.length >= 4 && (
+              <Link
+                href="/all-cars"
+                className="flex items-center gap-2 font-black text-base"
+              >
+                View All <IconContainer name="chevronRight" />
+              </Link>
+            )}
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

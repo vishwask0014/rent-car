@@ -15,21 +15,27 @@ export default function page() {
     <>
       {/* Hero */}
       <section className="container mx-auto px-4 sm:px-6">
-        <div  className="p-6 mt-8 sm:p-8 lg:p-12 rounded-2xl mb-8 text-white bg-(--primary)"
+        <div
+          className="p-6 mt-8 sm:p-8 lg:p-12 rounded-2xl mb-8 text-white bg-(--primary)"
           style={{ backgroundImage: "url('/static/img/cartyrepattern.svg')" }}
-        
         >
           <h1 className="text-3xl sm:text-4xl font-bold">Our Vehicles</h1>
           <p className="mt-2 text-white/90 max-w-2xl">
-            Explore our curated fleet across brands and segments. Book the right car for your next journey.
+            Explore our curated fleet across brands and segments. Book the right
+            car for your next journey.
           </p>
 
           <div className="flex flex-wrap gap-2 mt-4">
-            <span className="px-3 py-1 rounded-full bg-white/15 text-sm">Total: {total}</span>
-            <span className="px-3 py-1 rounded-full bg-white/15 text-sm">Sedan</span>
-            <span className="px-3 py-1 rounded-full bg-white/15 text-sm">SUV</span>
-            <span className="px-3 py-1 rounded-full bg-white/15 text-sm">Sports</span>
-            <span className="px-3 py-1 rounded-full bg-white/15 text-sm">Van</span>
+            <span className="px-3 py-1 rounded-full bg-white/15 text-sm">
+              Total: {total}
+            </span>
+            {data?.map((i: string) => {
+              return (
+                <span className="px-3 py-1 rounded-full bg-white/15 text-sm">
+                  {i.segament}
+                </span>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -60,12 +66,16 @@ export default function page() {
             <div className="mx-auto mb-4 h-12 w-12 rounded-full bg-(--gray) flex items-center justify-center text-(--primary) text-xl">
               🚗
             </div>
-            <h2 className="text-xl font-semibold mb-2">No vehicles available</h2>
+            <h2 className="text-xl font-semibold mb-2">
+              No vehicles available
+            </h2>
             <p className="text-gray-600 mb-6">
-              We couldn't find any cars at the moment. Please check back later or go to
-              the homepage to explore more.
+              We couldn't find any cars at the moment. Please check back later
+              or go to the homepage to explore more.
             </p>
-            <Link href="/" className="btnPrimary inline-block">Go to Home</Link>
+            <Link href="/" className="btnPrimary inline-block">
+              Go to Home
+            </Link>
           </div>
         )}
 

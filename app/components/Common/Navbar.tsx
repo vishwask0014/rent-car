@@ -21,7 +21,7 @@ export default function Navbar() {
         console.log("logout success");
       })
       .catch((error) => {
-        console.log("logout error", error);
+        console.log("logout error", error); 
       });
   };
 
