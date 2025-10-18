@@ -30,11 +30,11 @@ export function HeroSection() {
         style={{ backgroundImage: "url('/static/img/cartyrepattern.svg')" }}
       >
         {/* Left Side */}
-        <div className="max-w-[600px] w-full">
-          <h1 className="text-white font-bold leading-tight text-4xl sm:text-5xl lg:text-[60px] mb-4 sm:mb-6">
+        <div className="w-full flex flex-col lg:flex-row lg:gap-8">
+          <h1 className="text-white font-bold leading-tight max-w-1/2 text-4xl sm:text-4xl lg:text-[60px] mb-4 sm:mb-6">
             Experience the road like never before
           </h1>
-          <p className="text-white/80 mb-6 sm:mb-8 lg:max-w-[464px] w-full text-base sm:text-lg">
+          <p className="text-black/80 rounded-2xl mb-6 sm:mb-8 lg:max-w-[60%] flex justify-center items-center bg-white p-6 w-full text-base sm:text-lg">
             Drive your way and save: weekend specials up to 30% off, daily rates
             from ₹999, free cancellations, and instant pick‑up. Sedans, SUVs, and
             more—cleaned, inspected, and ready.
